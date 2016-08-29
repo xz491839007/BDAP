@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <script src = "../../static/jquery.js"></script>
+</head>
+<body>
+{#<script>#}
+{#    $(document).ready(function () {#}
+{#    var data = {#}
+{#         data: JSON.stringify({"lesson": "Operation System", "score": 100})#}
+{#   };#}
+{#  $.ajax({#}
+{#        url:"/postmanage",#}
+{#        type: 'POST',#}
+{#        data: data,#}
+{#        success: function (msg) {#}
+{#            alert(msg.name)#}
+{#        }#}
+{#})#}
+{#    });#}
+{#</script>#}
+
+<script>
+    $(document).ready(function () {
+        var student = new Object();
+        student.name = "Peng Shuang";
+        student.age = 23;
+        student.location = "China";
+        var data = JSON.stringify(student)
+
+    $.ajax({
+        url: "/postmanage",
+        type: "POST",
+        data: data
+    })
+    })
+</script>
+<h1>jQuery Example</h1>
+</body>
+</html>

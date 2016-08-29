@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>数据管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+      <link rel="stylesheet" href="../../other/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../../other/bootstrap/css/bootstrap-datetimepicker.min.css">
+      <link rel="stylesheet" href="../../other/css/font-awesome.min.css">
+      <link rel="stylesheet" href="../../other/css/ionicons.min.css">
+      <link rel="stylesheet" href="../../other/dist/css/AdminLTE.min.css">
+      <link rel="stylesheet" href="../../other/dist/css/skins/_all-skins.min.css">
+      <link rel="stylesheet" href="../../../../static/css/index.css">
+  </head>
+  <body class="sidebar-mini skin-purple wysihtml5-supported">
+      <div class="wrapper">
+          <header class="main-header">
+              <title>DMO | desert</title>
+              <a  class="logo">
+                  <span class="logo-lg">sentosa</span>
+              </a>
+              <nav class="navbar navbar-static-top" role="navigation">
+                  <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                      <span class="sr-only">Toggle navigation</span>
+                  </a>
+                  <div class="compy">
+                      艺龙大数据平台
+                  </div>
+                  <div class="navbar-custom-menu">
+                      <ul class="nav navbar-nav">
+                          <li class="dropdown user user-menu">
+                              <a class="dropdown-toggle" data-toggle="dropdown">
+                                  <span class="hidden-xs">Admin</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+          </header>
+      </div>
+      <aside class="main-sidebar">
+          <section class="sidebar">
+              <ul class="sidebar-menu">
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>数据知识</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../hiveTable/hiveTableList.html"><i class="fa fa-cog"></i>Hive表管理</a></li>
+                          <li><a href="../db/dbList.html"><i class="fa fa-cog"></i>DB配置</a></li>
+                          <li><a href="../quota/quotaList.html"><i class="fa fa-cog"></i>指标管理</a></li>
+                          <li><a href="../market/marketList.html"><i class="fa fa-cog"></i>集市管理</a></li>
+                          <li><a href="../hiveTable/timeVariableList.html"><i class="fa fa-cog"></i>时间变量管理</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>数据通道</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导入</a></li>
+                          <li><a href="../channel/importDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导入</a></li>
+                          <!--<li><a href="../channel/importHiveHiveList.html" class="lastMenu"><i class="fa fa-cog"></i>Hive-Hive导入</a></li>-->
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导出</a></li>
+                          <li><a href="../channel/exportDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导出</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>调度管理</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../task/taskList.html"><i class="fa fa-cog"></i>任务调度</a></li>
+                          <li><a href="../task/taskHostoryList.html"><i class="fa fa-cog"></i>任务日志管理</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>查询开发</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>查询</a></li>
+                          <li><a href="../dataManager/sqlSearch.html" class="lastMenu"><i class="fa fa-cog"></i>sql查询</a></li>
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>开发</a></li>
+                          <li><a href="../dataManager/hqlManager.html" class="lastMenu"><i class="fa fa-cog"></i>hql开发管理</a></li>
+                          <li><a href="../dataManager/hqlTaskList.html" class="lastMenu"><i class="fa fa-cog"></i>hql任务列表</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>监控</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../monitor/monitor.html"><i class="fa fa-cog"></i>全局拓扑图</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </section>
+      </aside>
+      <div class="content-wrapper">
+          <section class="content">
+              <div class="row">
+                  <ol class="breadcrumb">
+                      <li><a>集市管理</a></li>
+                      <li class="active">集市列表</li>
+                  </ol>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="col-md-3 no-padding-right" id="leftKu">
+                          <div class="box box-solid" style="min-height: 593px;">
+                              <div class="box-header with-border">
+                                  <h3 class="box-title">集市列表</h3>
+                                  <div class="box-tools">
+                                      <!--<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>-->
+                                  </div>
+                              </div>
+                              <div class="box-body no-padding" style="display: block;">
+                                  <ul class="nav nav-pills nav-stacked" style="height:510px;overflow-y: scroll;" id="leftMarket">
+                                  </ul>
+                                  <a href="javascript:void(0);" id="showAddMarket" class="btn btn-primary btn-block" style="background-color:#00a2ca;"><b>新增集市</b></a>
+                              </div>
+                          </div>
+                      </div><!-- /.col -->
+                      <div class="col-md-9">
+                          <div class="box  box-table" style="min-height: 593px;">
+                              <div class="box-header with-border">
+                                  <div class="mytableTop">
+                                      <h3 class="box-title">库列表</h3>
+                                  </div>
+                              </div>
+                              <div class="box-body mytable">
+                                  <table class="table table-bordered">
+                                      <thead>
+                                          <tr>
+                                              <th>库名</th>
+                                              <th>创建人</th>
+                                              <th>创建时间</th>
+                                              <th>备注</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody id="taskTableList">
+                                      </tbody></table>
+                              </div><!-- /.box-body -->
+                          </div>
+                      </div>
+                  </div><!-- /.col -->
+              </div>
+          </section>
+      </div>
+
+
+      <div class="modal" id="marketMadel">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title">新增集市</h4>
+                  </div>
+                  <div class="modal-body">
+                      <div class="box-body">
+                          <form role="form" class="form-horizontal">
+                              <div class="form-group">
+                                  <label  class="col-sm-2 control-label">集市名</label>
+                                  <div class="col-sm-6 input-group-sm">
+                                      <input type="text" class="form-control" id="marketName" placeholder="">
+                                  </div>
+                                  <div class="col-sm-4"></div>
+                              </div>
+                              <div class="form-group">
+                                  <label  class="col-sm-2 control-label" style="padding-top:0;">描述</label>
+                                  <div class="col-sm-8 input-group-sm">
+                                      <textarea class="miaoshu " id="desc"></textarea>
+                                  </div>
+                                  <div class="col-sm-2"></div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                      <button type="button" class="btn btn-primary" id="addMarket">确定</button>
+                  </div>
+              </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+      </div>
+
+      <div class="modal" id="marketMadelModify">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title">新增集市</h4>
+                  </div>
+                  <div class="modal-body">
+                      <div class="box-body">
+                          <form role="form" class="form-horizontal">
+                              <div class="form-group">
+                                  <label  class="col-sm-2 control-label">集市名</label>
+                                  <div class="col-sm-6 input-group-sm">
+                                      <input type="text" class="form-control" id="mname" placeholder="" readonly>
+                                  </div>
+                                  <div class="col-sm-4"></div>
+                              </div>
+                              <div class="form-group">
+                                  <label  class="col-sm-2 control-label" style="padding-top:0;">描述</label>
+                                  <div class="col-sm-8 input-group-sm">
+                                      <textarea class="miaoshu " id="node"></textarea>
+                                  </div>
+                                  <div class="col-sm-2"></div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                      <button type="button" class="btn btn-primary" id="modifyMarket">确定</button>
+                  </div>
+              </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+      </div>
+  </body>
+  <script src="../../other/require/require_jquery-2.1.4.js"></script>
+  <script src="../../js/requireConfig.js"></script>
+  <script src="../../js/market/marketList.js"></script>
+</html>

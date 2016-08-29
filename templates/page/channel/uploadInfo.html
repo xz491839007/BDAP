@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>数据管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+      <link rel="stylesheet" href="../..//other/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../..//other/bootstrap/css/bootstrap-datetimepicker.min.css">
+      <link rel="stylesheet" href="../..//other/css/font-awesome.min.css">
+      <link rel="stylesheet" href="../..//other/css/ionicons.min.css">
+      <link rel="stylesheet" href="../..//other/dist/css/AdminLTE.min.css">
+      <link rel="stylesheet" href="../..//other/dist/css/skins/_all-skins.min.css">
+      <link rel="stylesheet" href="../..//css/index.css">
+  </head>
+  <body class="sidebar-mini skin-purple wysihtml5-supported">
+      <div class="wrapper">
+          <header class="main-header">
+              <title>DMO | desert</title>
+              <a  class="logo">
+                  <span class="logo-lg">sentosa</span>
+              </a>
+              <nav class="navbar navbar-static-top" role="navigation">
+                  <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                      <span class="sr-only">Toggle navigation</span>
+                  </a>
+                  <div class="compy">
+                      艺龙大数据平台
+                  </div>
+                  <div class="navbar-custom-menu">
+                      <ul class="nav navbar-nav">
+                          <li class="dropdown user user-menu">
+                              <a class="dropdown-toggle" data-toggle="dropdown">
+                                  <span class="hidden-xs">Admin</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+          </header>
+      </div>
+      <aside class="main-sidebar">
+          <section class="sidebar">
+              <ul class="sidebar-menu">
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>数据知识</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../hiveTable/hiveTableList.html"><i class="fa fa-cog"></i>Hive表管理</a></li>
+                          <li><a href="../db/dbList.html"><i class="fa fa-cog"></i>DB配置</a></li>
+                          <li><a href="../quota/quotaList.html"><i class="fa fa-cog"></i>指标管理</a></li>
+                          <li><a href="../market/marketList.html"><i class="fa fa-cog"></i>集市管理</a></li>
+                          <li><a href="../hiveTable/timeVariableList.html"><i class="fa fa-cog"></i>时间变量管理</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>数据通道</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导入</a></li>
+                          <li><a href="importDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导入</a></li>
+                          <!--<li><a href="../channel/importHiveHiveList.html" class="lastMenu"><i class="fa fa-cog"></i>Hive-Hive导入</a></li>-->
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导出</a></li>
+                          <li><a href="exportDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导出</a></li>
+                          <li><a href="uploadList.html"><i class="fa fa-cog"></i>数据上传</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>调度管理</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../task/taskList.html"><i class="fa fa-cog"></i>任务调度</a></li>
+                          <li><a href="../task/taskHostoryList.html"><i class="fa fa-cog"></i>任务日志管理</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>查询开发</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>查询</a></li>
+                          <li><a href="../dataManager/sqlSearch.html" class="lastMenu"><i class="fa fa-cog"></i>sql查询</a></li>
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>开发</a></li>
+                          <li><a href="../dataManager/hqlManager.html" class="lastMenu"><i class="fa fa-cog"></i>hql开发管理</a></li>
+                          <li><a href="../dataManager/hqlTaskList.html" class="lastMenu"><i class="fa fa-cog"></i>hql任务列表</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>监控</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../monitor/monitor.html"><i class="fa fa-cog"></i>全局拓扑图</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </section>
+      </aside>
+      <div class="content-wrapper">
+          <section class="content">
+              <div class="row">
+                  <ol class="breadcrumb">
+                      <li><a>数据通道</a></li>
+                      <li class="active">数据上传详情</li>
+                  </ol>
+              </div>
+              <div class="row">
+                  <!--标签页-->
+                  <div class="box">
+                      <form class="form-horizontal">
+                          <div class="box-body">
+                              <div class="form-group">
+                                  <label class="col-sm-2 control-label">任务名</label>
+                                  <div class="col-sm-3 input-group-sm">
+                                      <input type="text" class="form-control" id="name" placeholder="" readonly>
+                                  </div>
+                                  <div class="col-sm-7"></div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-2 control-label">负责人</label>
+                                  <div class="col-sm-3 input-group-sm">
+                                      <input type="text" class="form-control" id="administrator" placeholder="" readonly>
+                                  </div>
+                                  <div class="col-sm-7"></div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-2 control-label">共享</label>
+                                  <div class="col-sm-3 input-group-sm">
+                                      <input type="text" class="form-control" id="share" placeholder="" readonly>
+                                  </div>
+                                  <div class="col-sm-7"></div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-2 control-label">hive库</label>
+                                  <div class="col-sm-3 input-group-sm">
+                                      <input type="text" class="form-control" id="database" placeholder="" readonly>
+                                  </div>
+                                  <div class="col-sm-7"></div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-2 control-label">hive表</label>
+                                  <div class="col-sm-3 input-group-sm">
+                                      <input type="text" class="form-control" id="table" placeholder="" readonly>
+                                  </div>
+                                  <div class="col-sm-7"></div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-2 control-label">分区字段</label>
+                                  <div class="col-sm-3 input-group-sm">
+                                      <input type="text" class="form-control" id="fenqus" placeholder="" readonly>
+                                  </div>
+                                  <div class="col-sm-7"></div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-sm-2 control-label">描述</label>
+                                  <div class="col-sm-3 input-group-sm">
+                                      <input type="text" class="form-control" id="describe" placeholder="" readonly>
+                                  </div>
+                                  <div class="col-sm-7"></div>
+                              </div>
+
+                          </div><!-- /.box-body -->
+                      </form>
+
+                  </div>
+              </div>
+          </section>
+      </div>
+
+      <div class="overlay-wrapper" style="display: none;">
+          <div class="overlay">
+              <i class="fa fa-refresh fa-spin"></i>
+          </div>
+      </div>
+
+      <!--<div class="modal" id="mymodalcontent">-->
+          <!--<div class="modal-dialog">-->
+              <!--<div class="modal-content">-->
+                  <!--<div class="modal-header">-->
+                      <!--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>-->
+                      <!--<h4 class="modal-title">模态弹出窗标题</h4>-->
+                  <!--</div>-->
+                  <!--<div class="modal-body">-->
+                      <!--<p>模态弹出窗主体内容</p>-->
+                  <!--</div>-->
+                  <!--<div class="modal-footer">-->
+                      <!--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>-->
+                      <!--<button type="button" class="btn btn-primary">保存</button>-->
+                  <!--</div>-->
+              <!--</div>-->
+          <!--</div>-->
+      <!--</div>-->
+
+  </body>
+  <script src="../../other/require/require_jquery-2.1.4.js"></script>
+  <script src="../../js/requireConfig.js"></script>
+  <script src="../..//js/channel/uploadInfo.js"></script>
+</html>

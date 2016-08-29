@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>数据管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-datetimepicker.min.css">
+      <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/other/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/static/other/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body class="sidebar-mini skin-purple wysihtml5-supported">
+<div class="wrapper">
+    <header class="main-header">
+        <title>SmartX</title>
+        <a  class="logo">
+            <span class="logo-lg">smartx</span>
+        </a>
+        <nav class="navbar navbar-static-top" role="navigation">
+            <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <div class="compy">
+                北邮大数据平台
+            </div>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="hidden-xs">Admin</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</div>
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>数据知识</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/hiveTable/hiveTableList"><i class="fa fa-cog"></i>Hive表管理</a></li>
+                    <li><a href="/db/dbList"><i class="fa fa-cog"></i>DB配置</a></li>
+                    <li><a href="/quota/quotaList"><i class="fa fa-cog"></i>指标管理</a></li>
+                    <li><a href="/market/marketList"><i class="fa fa-cog"></i>集市管理</a></li>
+                    <li><a href="/hiveTable/timeVariableList"><i class="fa fa-cog"></i>时间变量管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>数据通道</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导入</a></li>
+                    <li><a href="/channel/importDBList" class="lastMenu"><i class="fa fa-cog"></i>DB导入</a></li>
+                    <!--<li><a href="../channel/importHiveHiveList.html" class="lastMenu"><i class="fa fa-cog"></i>Hive-Hive导入</a></li>-->
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导出</a></li>
+                    <li><a href="/channel/exportDBList" class="lastMenu"><i class="fa fa-cog"></i>DB导出</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>调度管理</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/task/taskList"><i class="fa fa-cog"></i>任务调度</a></li>
+                    <li><a href="/task/taskHostoryList"><i class="fa fa-cog"></i>任务日志管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>查询开发</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>查询</a></li>
+                    <li><a href="/dataManager/sqlSearch" class="lastMenu"><i class="fa fa-cog"></i>sql查询</a></li>
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>开发</a></li>
+                    <li><a href="/dataManager/hqlManager" class="lastMenu"><i class="fa fa-cog"></i>hql开发管理</a></li>
+                    <li><a href="/dataManager/hqlTaskList" class="lastMenu"><i class="fa fa-cog"></i>hql任务列表</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>监控</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/monitor/monitor"><i class="fa fa-cog"></i>全局拓扑图</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>用户标签</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="/usertag/taglist"><i class="fa fa-cog"></i>标签管理</a></li>
+                          <li><a href="/usertag/ruleList"><i class="fa fa-cog"></i>用户群组管理</a></li>
+                      </ul>
+            </li>
+        </ul>
+    </section>
+</aside>
+<div class="content-wrapper">
+    <section class="content">
+
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a>数据知识</a></li>
+                <li><a href="dbList.html">DB配置</a></li>
+                <li class="active">新增单库</li>
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">群组名称</label>
+                                <div class="col-sm-3 input-group-sm">
+                                    <input type="text" class="form-control" id="name" placeholder="">
+                                </div>
+                                <div class="col-sm-7"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">用户标识字段</label>
+                                <div class="col-sm-3 input-group-sm">
+                                    <div class="radio" id="uuid">
+                                        <label>
+                                            <input value="card_num" name="uuid" type="radio" checked> card_num
+                                        </label>
+                                        <label style="margin-left:30px;">
+                                            <input value="device_id" name="uuid" type="radio"> device_id
+                                        </label><label style="margin-left:30px;">
+                                        <input value="telphone_no" name="uuid" type="radio"> telphone_no
+                                    </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">上传文件格式</label>
+                                <div class="col-sm-3 input-group-sm">
+                                    <select id="fileType" class="myselect100">
+                                        <option value="cvs">cvs</option>
+                                        <option value="txt">txt</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-7"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">文件行分隔符</label>
+                                <div class="col-sm-3 input-group-sm">
+                                    <select id="fileRowSpe" class="myselect100">
+                                        <option value="\n">\n</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-7"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">文件列分隔符</label>
+                                <div class="col-sm-3 input-group-sm">
+                                    <select id="fileColSpe" class="myselect100">
+                                        <option value="\t">\t</option>
+                                        <option value=",">,</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-7"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">上传文件</label>
+                                <div class="col-sm-3 input-group-sm">
+                                    <input type="file"  id="file" name="file" >
+                                </div>
+                                <div class="col-sm-7"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="desc" class="col-sm-2 control-label">描述</label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control" id="desc" rows="6" placeholder="描述..."></textarea>
+                                </div>
+                                <div class="col-sm-4"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="desc" class="col-sm-2 control-label"></label>
+                                <div class="col-sm-3">
+                                    <a class="btn btn-info pull-left" id="add">保存</a>
+                                </div>
+                                <div class="col-sm-3">
+                                </div>
+                                <div class="col-sm-4"></div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<iframe id="callbackIframe" name="callbackIframe" style="display: none;">
+</iframe>
+</body>
+<script src="/static/js/other/require/require_jquery-2.1.4.js"></script>
+<script src="/static/js/requireConfig.js"></script>
+{#<script src="/static/js/userTag/addRuleDefined.js"></script>#}
+</html>

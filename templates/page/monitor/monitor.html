@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>数据管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+      <link rel="stylesheet" href="../..//other/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../..//other/bootstrap/css/bootstrap-datetimepicker.min.css">
+      <link rel="stylesheet" href="../..//other/css/font-awesome.min.css">
+      <link rel="stylesheet" href="../..//other/css/ionicons.min.css">
+      <link rel="stylesheet" href="../..//other/dist/css/AdminLTE.min.css">
+      <link rel="stylesheet" href="../..//other/dist/css/skins/_all-skins.min.css">
+      <link rel="stylesheet" href="../..//other/quickSearch/quickSearch.css">
+      <link rel="stylesheet" href="../..//other/plugins/colony/normalize.css">
+      <link rel="stylesheet" href="../..//other/plugins/colony/colony.css">
+      <link rel="stylesheet" href="../..//css/index.css">
+  </head>
+  <body class="sidebar-mini skin-purple wysihtml5-supported">
+      <div class="wrapper">
+          <header class="main-header">
+              <title>DMO | desert</title>
+              <a  class="logo">
+                  <span class="logo-lg">sentosa</span>
+              </a>
+              <nav class="navbar navbar-static-top" role="navigation">
+                  <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                      <span class="sr-only">Toggle navigation</span>
+                  </a>
+                  <div class="compy">
+                      艺龙大数据平台
+                  </div>
+                  <div class="navbar-custom-menu">
+                      <ul class="nav navbar-nav">
+                          <li class="dropdown user user-menu">
+                              <a class="dropdown-toggle" data-toggle="dropdown">
+                                  <span class="hidden-xs">Admin</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+          </header>
+      </div>
+      <aside class="main-sidebar">
+          <section class="sidebar">
+              <ul class="sidebar-menu">
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>数据知识</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../hiveTable/hiveTableList.html"><i class="fa fa-cog"></i>Hive表管理</a></li>
+                          <li><a href="../db/dbList.html"><i class="fa fa-cog"></i>DB配置</a></li>
+                          <li><a href="../quota/quotaList.html"><i class="fa fa-cog"></i>指标管理</a></li>
+                          <li><a href="../market/marketList.html"><i class="fa fa-cog"></i>集市管理</a></li>
+                          <li><a href="../hiveTable/timeVariableList.html"><i class="fa fa-cog"></i>时间变量管理</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>数据通道</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导入</a></li>
+                          <li><a href="../channel/importDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导入</a></li>
+                          <!--<li><a href="../channel/importHiveHiveList.html" class="lastMenu"><i class="fa fa-cog"></i>Hive-Hive导入</a></li>-->
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导出</a></li>
+                          <li><a href="../channel/exportDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导出</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>调度管理</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../task/taskList.html"><i class="fa fa-cog"></i>任务调度</a></li>
+                          <li><a href="../task/taskHostoryList.html"><i class="fa fa-cog"></i>任务日志管理</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>查询开发</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>查询</a></li>
+                          <li><a href="../dataManager/sqlSearch.html" class="lastMenu"><i class="fa fa-cog"></i>sql查询</a></li>
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>开发</a></li>
+                          <li><a href="../dataManager/hqlManager.html" class="lastMenu"><i class="fa fa-cog"></i>hql开发管理</a></li>
+                          <li><a href="../dataManager/hqlTaskList.html" class="lastMenu"><i class="fa fa-cog"></i>hql任务列表</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>监控</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../monitor/monitor.html"><i class="fa fa-cog"></i>全局拓扑图</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </section>
+      </aside>
+      <div class="content-wrapper">
+          <section class="content">
+              <div class="row">
+                  <ol class="breadcrumb">
+                      <li><a>监控</a></li>
+                      <li class="active">全局拓扑图</li>
+                  </ol>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="box  box-table">
+                          <div class="box-body" style="overflow: scroll;">
+                            <div class="wrapper mywrapper" style="min-height: 600px;">
+                                <div class="main" role="main">
+                                    <div class="colony" id="colony">
+
+                                    </div>
+                                    <div id="readme">
+                                        <div id="readme-contents">
+                                            <h4 id="englishName">调度名称</h4>
+                                            <h4 id="taskName">任务名称</h4>
+                                            <h4 id="times">调度执行时间</h4>
+                                            <h4 id="pinci">频次</h4>
+                                            <h4 id="status">状态</h4>
+                                            <a href="javascript:void(0)" target="_blank" id="log">日志</a>
+                                            <a href="javascript:void(0)" target="_blank" id="diaodu">管理调度</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="tipColors">
+                                  <span style="color:rgb(15, 54, 179);">prepared</span>
+                                  <span style="color:rgb(57, 15, 179);">ready</span>
+                                  <span style="color:rgb(179, 171, 15);">waiting</span>
+                                  <span style="color:rgb(13, 158, 54);">running</span>
+                                  <span style="color:rgb(136, 202, 22);">success</span>
+                                  <span style="color:rgb(21, 19, 19);">failed</span>
+                                  <span style="color:rgb(163, 10, 33);">killed</span>
+
+                                  <input type="text" placeholder="任务名" id="tasknameValue"/>
+                                  <a class="pull-right" id="search">搜索</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div><!-- /.col -->
+              </div>
+          </section>
+      </div>
+
+
+  </body>
+  <script src="../..//other/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+  <script src="../..//other/bootstrap/js/bootstrap.min.js"></script>
+  <!--<script src="../../../sentosa/other/bootstrap/js/bootstrap-datetimepicker.min.js"></script>-->
+  <script src="../..//other/dist/js/app.min.js"></script>
+  <!--<script src="../../../sentosa/other/quickSearch/quickSearch.js"></script>-->
+  <script src="../..//js/common.js"></script>
+  <script src="../..//other/plugins/colony/colony.min.js"></script>
+  <!--<script src="../../../sentosa/js/monitor/monitor.js"></script>-->
+</html>

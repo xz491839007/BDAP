@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>数据管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+      <link rel="stylesheet" href="../../other/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="../../other/bootstrap/css/bootstrap-datetimepicker.min.css">
+      <link rel="stylesheet" href="../../other/css/font-awesome.min.css">
+      <link rel="stylesheet" href="../../other/css/ionicons.min.css">
+      <link rel="stylesheet" href="../../other/dist/css/AdminLTE.min.css">
+      <link rel="stylesheet" href="../../other/dist/css/skins/_all-skins.min.css">
+      <link rel="stylesheet" href="../../../../static/css/index.css">
+  </head>
+  <body class="sidebar-mini skin-purple wysihtml5-supported">
+      <div class="wrapper">
+          <header class="main-header">
+              <title>DMO | desert</title>
+              <a  class="logo">
+                  <span class="logo-lg">sentosa</span>
+              </a>
+              <nav class="navbar navbar-static-top" role="navigation">
+                  <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                      <span class="sr-only">Toggle navigation</span>
+                  </a>
+                  <div class="compy">
+                      艺龙大数据平台
+                  </div>
+                  <div class="navbar-custom-menu">
+                      <ul class="nav navbar-nav">
+                          <li class="dropdown user user-menu">
+                              <a class="dropdown-toggle" data-toggle="dropdown">
+                                  <span class="hidden-xs">Admin</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+          </header>
+      </div>
+      <aside class="main-sidebar">
+          <section class="sidebar">
+              <ul class="sidebar-menu">
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>数据知识</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../hiveTable/hiveTableList.html"><i class="fa fa-cog"></i>Hive表管理</a></li>
+                          <li><a href="../db/dbList.html"><i class="fa fa-cog"></i>DB配置</a></li>
+                          <li><a href="../quota/quotaList.html"><i class="fa fa-cog"></i>指标管理</a></li>
+                          <li><a href="../market/marketList.html"><i class="fa fa-cog"></i>集市管理</a></li>
+                          <li><a href="../hiveTable/timeVariableList.html"><i class="fa fa-cog"></i>时间变量管理</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>数据通道</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导入</a></li>
+                          <li><a href="../channel/importDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导入</a></li>
+                          <!--<li><a href="../channel/importHiveHiveList.html" class="lastMenu"><i class="fa fa-cog"></i>Hive-Hive导入</a></li>-->
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导出</a></li>
+                          <li><a href="../channel/exportDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导出</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>调度管理</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../task/taskList.html"><i class="fa fa-cog"></i>任务调度</a></li>
+                          <li><a href="../task/taskHostoryList.html"><i class="fa fa-cog"></i>任务日志管理</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>查询开发</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>查询</a></li>
+                          <li><a href="../dataManager/sqlSearch.html" class="lastMenu"><i class="fa fa-cog"></i>sql查询</a></li>
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>开发</a></li>
+                          <li><a href="../dataManager/hqlManager.html" class="lastMenu"><i class="fa fa-cog"></i>hql开发管理</a></li>
+                          <li><a href="../dataManager/hqlTaskList.html" class="lastMenu"><i class="fa fa-cog"></i>hql任务列表</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>监控</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../monitor/monitor.html"><i class="fa fa-cog"></i>全局拓扑图</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </section>
+      </aside>
+      <div class="content-wrapper">
+          <section class="content">
+              <div class="row">
+                  <ol class="breadcrumb">
+                      <li><a>指标管理</a></li>
+                      <li class="active">指标管理列表</li>
+                  </ol>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="box  box-table">
+                          <div class="box-header with-border">
+                              <div class="mytableTop">
+                                  <h3 class="box-title">指标管理列表</h3>
+                                  <i class="fa fa-fw fa-plus pull-right" id="addQuota"></i>
+                              </div>
+                          </div>
+                          <div class="box-body mytable">
+                              <table class="table table-bordered">
+                                  <thead>
+                                      <tr>
+                                          <th>指标名(英文)</th>
+                                          <th>指标名(中文)</th>
+                                          <th>备注</th>
+                                          <th>创建人</th>
+                                          <th>创建时间</th>
+                                          <th  style="width:100px;">操作</th>
+                                      </tr>
+                                      <tr class="searchTh">
+                                          <th><input type="text" id="ename"/></th>
+                                          <th><input type="text" id="cname"/></th>
+                                          <th></th>
+                                          <th><input type="text" id="fuzeren"/></th>
+                                          <th></th>
+                                          <th></th>
+                                      </tr>
+                                  </thead>
+                                  <tbody id="taskTableList">
+                                  </tbody></table>
+                          </div><!-- /.box-body -->
+                          <div class="box-footer clearfix">
+                              <ul class="pagination pagination-sm no-margin pull-right">
+                                  <li><a href="javascript:void(0);" id="prevPage">上一页</a></li>
+                                  <li><a href="javascript:void(0);" id="nextPage">下一页</a></li>
+                              </ul>
+                              当前页数：<small id="currentPageNum">0</small>
+                              总页数：<small id="totalPageNum">0</small>
+                              总数：<small id="totalNum">0</small>
+                          </div>
+                      </div>
+                  </div><!-- /.col -->
+              </div>
+          </section>
+      </div>
+
+      <div class="overlay-wrapper" style="display: none;">
+          <div class="overlay">
+              <i class="fa fa-refresh fa-spin"></i>
+          </div>
+      </div>
+  </body>
+  <script src="../../other/require/require_jquery-2.1.4.js"></script>
+  <script src="../../js/requireConfig.js"></script>
+  <script src="../../js/quota/quotaList.js"></script>
+</html>

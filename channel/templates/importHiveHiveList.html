@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>数据管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"><link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/other/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/static/other/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/static/other/quickSearch/quickSearch.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+  </head>
+  <body class="sidebar-mini skin-purple wysihtml5-supported">
+      <div class="wrapper">
+          <header class="main-header">
+              <a  class="logo">
+                  <span class="logo-lg">SmartX</span>
+              </a>
+              <nav class="navbar navbar-static-top" role="navigation">
+                  <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                      <span class="sr-only">Toggle navigation</span>
+                  </a>
+                  <div class="compy">
+                      北邮大数据平台
+                  </div>
+                  <div class="navbar-custom-menu">
+                      <ul class="nav navbar-nav">
+                          <li class="dropdown user user-menu">
+                              <a class="dropdown-toggle" data-toggle="dropdown">
+                                  <span class="hidden-xs">Admin</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+          </header>
+      </div>
+      <aside class="main-sidebar">
+          <section class="sidebar">
+              <ul class="sidebar-menu">
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>数据知识</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="dataknowledge/hiveTableList"><i class="fa fa-cog"></i>Hive表管理</a></li>
+                          <li><a href="dataknowledge/dbList.html"><i class="fa fa-cog"></i>DB配置</a></li>
+                          <li><a href="../quota/quotaList.html"><i class="fa fa-cog"></i>指标管理</a></li>
+                          <li><a href="../market/marketList.html"><i class="fa fa-cog"></i>集市管理</a></li>
+                          <li><a href="../hiveTable/timeVariableList.html"><i class="fa fa-cog"></i>时间变量管理</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>数据通道</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导入</a></li>
+                          <li><a href="importDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导入</a></li>
+                          <!--<li><a href="../channel/importHiveHiveList.html" class="lastMenu"><i class="fa fa-cog"></i>Hive-Hive导入</a></li>-->
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导出</a></li>
+                          <li><a href="exportDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导出</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>查询开发</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>查询</a></li>
+                          <li><a href="../dataManager/sqlSearch.html" class="lastMenu"><i class="fa fa-cog"></i>sql查询</a></li>
+                          <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>开发</a></li>
+                          <li><a href="../dataManager/hqlManager.html" class="lastMenu"><i class="fa fa-cog"></i>hql开发管理</a></li>
+                          <li><a href="../dataManager/hqlTaskList.html" class="lastMenu"><i class="fa fa-cog"></i>hql任务列表</a></li>
+                      </ul>
+                  </li>
+                  <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>监控</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="../monitor/monitor.html"><i class="fa fa-cog"></i>全局拓扑图</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </section>
+      </aside>
+      <div class="content-wrapper">
+          <section class="content">
+              <div class="row">
+                  <ol class="breadcrumb">
+                      <li><a>数据通道</a></li>
+                      <li class="active">导入</li>
+                      <li class="active">Hive-Hive导入</li>
+                  </ol>
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="box  box-table">
+                          <div class="box-header with-border">
+                              <div class="mytableTop">
+                                  <h3 class="box-title">任务列表</h3>
+                                  <i class="fa fa-fw fa-plus pull-right" id="addChannel"></i>
+                              </div>
+                              <div class="form-group col-sm-12 mysearch">
+                                  <label class="col-sm-2 control-label">任务名称:</label>
+                                  <div class="input-group-sm col-sm-2">
+                                      <input class="form-control" type="text" value="" placeholder="">
+                                  </div>
+                                  <label class="col-sm-2 control-label">表名:</label>
+                                  <div class="input-group-sm col-sm-2">
+                                      <input class="form-control" type="text" value="" placeholder="">
+                                  </div>
+                                  <label class="col-sm-2 control-label">负责人:</label>
+                                  <div class="input-group-sm col-sm-2">
+                                      <input class="form-control" type="text" value="" placeholder="">
+                                  </div>
+                              </div>
+                              <div class="form-group col-sm-12 mysearch">
+                                  <label class="col-sm-2 control-label">描述:</label>
+                                  <div class="input-group-sm col-sm-2">
+                                      <input class="form-control" type="text" value="" placeholder="">
+                                  </div>
+                                  <label class="col-sm-2 control-label">创建时间:</label>
+                                  <div class="input-group-sm col-sm-2">
+                                      <input class="form-control" type="text" id="createTime" value="" placeholder="">
+                                  </div>
+                                  <div class="input-group-sm col-sm-3">
+
+                                  </div>
+                                  <div class="input-group-sm col-sm-1">
+                                      <button class="btn btn-block btn-info btn-sm">查询</button>
+                                  </div>
+                              </div>
+
+                          </div>
+                          <div class="box-body mytable">
+                              <table class="table table-bordered">
+                                  <tbody>
+                                  <tr>
+                                      <th>任务名称</th>
+                                      <th>表名</th>
+                                      <th>负责人</th>
+                                      <th>描述</th>
+                                      <th>创建时间</th>
+                                      <th>操作</th>
+                                  </tr>
+                                  <tr>
+                                      <td>test_table_name</td>
+                                      <td>test_table_nametest_table_nametest_table_nametest_table_name</td>
+                                      <td>
+                                          孙峥
+                                      </td>
+                                      <td>
+                                          test_table_nametest_table_nametest_table_nametest_table_name
+                                      </td>
+                                      <td>
+                                          2016/06/06
+                                      </td>
+                                      <td>
+                                          <i class="fa fa-fw fa-cog pull-left"></i>
+                                          <i class="fa fa-fw fa-file-text pull-left"></i>
+                                          <i class="fa fa-fw fa-times pull-left"></i>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>test_table_name</td>
+                                      <td>test_table_nametest_table_nametest_table_nametest_table_name</td>
+                                      <td>
+                                          孙峥
+                                      </td>
+                                      <td>
+                                          2016/06/06
+                                      </td>
+                                      <td>
+                                          2016/06/06
+                                      </td>
+                                  </tr>
+                                  </tbody></table>
+                          </div><!-- /.box-body -->
+                          <div class="box-footer clearfix">
+                              <ul class="pagination pagination-sm no-margin pull-right">
+                                  <li><a href="#">«</a></li>
+                                  <li><a href="#">1</a></li>
+                                  <li><a href="#">2</a></li>
+                                  <li><a href="#">3</a></li>
+                                  <li><a href="#">»</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div><!-- /.col -->
+              </div>
+          </section>
+      </div>
+  </body>
+  <script src="../../other/require/require_jquery-2.1.4.js"></script>
+  <script src="../../js/requireConfig.js"></script>
+  <script src="../..//js/channel/importHiveHiveList.js"></script>
+</html>

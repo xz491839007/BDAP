@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>数据管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-datetimepicker.min.css">
+      <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/other/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/static/other/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/static/other/quickSearch/quickSearch.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body class="sidebar-mini skin-purple wysihtml5-supported">
+    <div class="wrapper">
+        <header class="main-header">
+            <title>smartx</title>
+            <a  class="logo">
+                <span class="logo-lg">smartx</span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="compy">
+                    北邮大数据平台
+                </div>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown user user-menu">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="hidden-xs">Admin</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>数据知识</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/hiveTable/hiveTableList"><i class="fa fa-cog"></i>Hive表管理</a></li>
+                    <li><a href="/db/dbList"><i class="fa fa-cog"></i>DB配置</a></li>
+                    <li><a href="/quota/quotaList"><i class="fa fa-cog"></i>指标管理</a></li>
+                    <li><a href="/market/marketList"><i class="fa fa-cog"></i>集市管理</a></li>
+                    <li><a href="/hiveTable/timeVariableList"><i class="fa fa-cog"></i>时间变量管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>数据通道</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导入</a></li>
+                    <li><a href="/channel/importDBList" class="lastMenu"><i class="fa fa-cog"></i>DB导入</a></li>
+                    <!--<li><a href="../channel/importHiveHiveList.html" class="lastMenu"><i class="fa fa-cog"></i>Hive-Hive导入</a></li>-->
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导出</a></li>
+                    <li><a href="/channel/exportDBList" class="lastMenu"><i class="fa fa-cog"></i>DB导出</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>调度管理</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/task/taskList"><i class="fa fa-cog"></i>任务调度</a></li>
+                    <li><a href="/task/taskHostoryList"><i class="fa fa-cog"></i>任务日志管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>查询开发</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>查询</a></li>
+                    <li><a href="/dataManager/sqlSearch" class="lastMenu"><i class="fa fa-cog"></i>sql查询</a></li>
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>开发</a></li>
+                    <li><a href="/dataManager/hqlManager" class="lastMenu"><i class="fa fa-cog"></i>hql开发管理</a></li>
+                    <li><a href="/dataManager/hqlTaskList" class="lastMenu"><i class="fa fa-cog"></i>hql任务列表</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>监控</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/monitor/monitor"><i class="fa fa-cog"></i>全局拓扑图</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>用户标签</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="/usertag/taglist"><i class="fa fa-cog"></i>标签管理</a></li>
+                          <li><a href="/usertag/ruleList"><i class="fa fa-cog"></i>用户群组管理</a></li>
+                      </ul>
+            </li>
+        </ul>
+    </section>
+</aside>
+    <div class="content-wrapper">
+        <section class="content">
+
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li><a>用户标签管理</a></li>
+                    <li class="active">新增标签</li>
+                </ol>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box">
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">标签名称</label>
+                                    <div class="col-sm-3 input-group-sm">
+                                        <input type="text" class="form-control" id="tagname" placeholder="">
+                                    </div>
+                                    <div class="col-sm-2"><small class="errorMessage" id="enameError">标签名称重复,请重新填写</small></div>
+                                    <div class="col-sm-5"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">DB简称</label>
+                                    <div class="col-sm-3 input-group-sm">
+                                        <input type="text" class="form-control" id="dbname" name="dbname" placeholder="">
+                                        <label class="glyphicon glyphicon-search quickSearchIcon"></label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">表名</label>
+                                    <div class="col-sm-3 input-group-sm">
+                                        <input type="text" class="form-control" id="tableName" placeholder="">
+                                        <label class="glyphicon glyphicon-search quickSearchIcon"></label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">标签类别</label>
+                                    <div class="col-sm-3 input-group-sm">
+                                        <select id="tagType" class="myselect100">
+                                            <option value="1">维度</option>
+                                            <option value="2">静态指标</option>
+                                            <option value="3">动态指标</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-7"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">标签映射字段</label>
+                                    <div class="col-sm-3 input-group-sm">
+                                        <input type="text" class="form-control" id="selectColum" placeholder="">
+                                        <label class="glyphicon glyphicon-search quickSearchIcon"></label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                    </div>
+                                </div>
+                                <div class="form-group dongtaizhibiao" style="display: none;">
+                                    <label class="col-sm-2 control-label">聚合规则</label>
+                                    <div class="col-sm-3 input-group-sm">
+                                        <input type="text" class="form-control" id="rule" placeholder="">
+                                    </div>
+                                    <div class="col-sm-7"></div>
+                                </div>
+                                <div class="form-group dongtaizhibiao" style="display: none;">
+                                    <label class="col-sm-2 control-label">聚合时间字段映射</label>
+                                    <div class="col-sm-3 input-group-sm">
+                                        <input type="text" class="form-control" id="juheDate" placeholder="">
+                                    </div>
+                                    <div class="col-sm-7"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">标签分类</label>
+                                    <div class="col-sm-3 input-group-sm">
+                                        <select id="tagClass" class="myselect100">
+                                            <option value="1">字段属性</option>
+                                            <option value="2">浏览行为</option>
+                                            <option value="3">购买习惯</option>
+                                            <option value="4">搜索偏好</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-7"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">用户标识字段</label>
+                                    <div class="col-sm-3 input-group-sm">
+                                        <select id="userColum" class="myselect100">
+                                            <option value="card_num">card_num</option>
+                                            <option value="device_id">device_id</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-7"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">标签枚举值或域值</label>
+                                    <div class="col-sm-3 input-group-sm">
+                                        <a class="btn pull-left" id="yulanColums">预览</a>
+                                    </div>
+                                    <div class="col-sm-7"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="desc" class="col-sm-2 control-label">描述</label>
+                                    <div class="col-sm-6">
+                                        <textarea class="form-control" id="desc" rows="6" placeholder="描述..."></textarea>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="desc" class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-3">
+                                        <a class="btn btn-info pull-left" id="add">保存</a>
+                                    </div>
+                                    <div class="col-sm-3">
+
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </div><!-- /.box-body -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+</div>
+
+</body>
+<script src="/staic/other/require/require_jquery-2.1.4.js"></script>
+<script src="/static/js/requireConfig.js"></script>
+{#<script src="/static/js/userTag/tagAddDataSource.js"></script>#}
+</html>

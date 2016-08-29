@@ -1,0 +1,27 @@
+.my_quick_search{
+    list-style: none;
+    display: none;
+    padding-left: 0;
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    z-index: 999;
+    min-width: 200px;
+    max-width:600px;
+    max-height:400px;
+    overflow-y: scroll;
+}
+.my_quick_search li{
+    width: 100%;
+    padding: 5px 24px 5px 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+.my_quick_search li:hover{
+    color:#A56BED;
+    background-color:#D0CFE7;
+}
+.my_quick_search li.selected{
+    color:#A56BED;
+    background-color:#D0CFE7;
+}

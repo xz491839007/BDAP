@@ -1,0 +1,217 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SmartX</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'other/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'other/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'other/dist/css/AdminLTE.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <!-- <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css"> -->
+</head>
+<body class="hold-transition login-page">
+<div class="header">
+    <div class="headbd">
+        <span class="logo">SmartX</span>
+
+        <div>
+        </div>
+        <div class="content">
+            <div id="level">
+                <canvas id="Mycanvas"></canvas>
+            </div>
+
+            <div class="login-box">
+                <div class="login-box-body">
+                    <div class="login-logo">
+                        <a><b>SmartX</b></a>
+                    </div><!-- /.login-logo -->
+                    <!--
+                    <p class="login-box-msg">login to start your session</p>
+                    -->
+                    <form>
+                        <div class="form-group has-feedback">
+                            <input type="text" class="form-control" placeholder="账号" id="userName">
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <input type="password" class="form-control" placeholder="密码" id="password">
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <small style="color:#B22121;" id="errorMessage"></small>
+                            </div><!-- /.col -->
+                            <div class="col-xs-4">
+                                <a class="btn btn-primary btn-block btn-flat loginBut" onclick=signIn()>Sign In</a>
+                            </div><!-- /.col -->
+                        </div>
+                    </form>
+
+                    <!-- <a href="#">I forgot my password</a><br> -->
+                    <!-- <a href="register.html" class="text-center">Register a new membership</a> -->
+
+                </div><!-- /.login-box-body -->
+            </div><!-- /.login-box -->
+
+        </div>
+        <div class="footer">
+            <div class="headbd">
+                <span>Designed By Allen Peng</span>
+
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/other/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!--<script src="../../sentosa/js/common.js"></script>-->
+<script>
+    //定义画布宽高和生成点的个数
+    var WIDTH = 500, HEIGHT = 600, POINT = 20;
+
+    var canvas = document.getElementById('Mycanvas');
+    canvas.width = WIDTH,
+            canvas.height = HEIGHT;
+    var context = canvas.getContext('2d');
+    context.strokeStyle = '#4B9970',
+            context.strokeWidth = 1,
+            context.fillStyle = '#4B9970';
+    var circleArr = [];
+
+    //线条：开始xy坐标，结束xy坐标，线条透明度
+    function Line(x, y, _x, _y, o) {
+        this.beginX = x,
+                this.beginY = y,
+                this.closeX = _x,
+                this.closeY = _y,
+                this.o = o;
+    }
+    //点：圆心xy坐标，半径，每帧移动xy的距离
+    function Circle(x, y, r, moveX, moveY) {
+        this.x = x,
+                this.y = y,
+                this.r = r,
+                this.moveX = moveX,
+                this.moveY = moveY;
+    }
+    //生成max和min之间的随机数
+    function num(max, _min) {
+        var min = arguments[1] || 0;
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    // 绘制原点
+    function drawCricle(cxt, x, y, r, moveX, moveY) {
+        var circle = new Circle(x, y, r, moveX, moveY)
+        cxt.beginPath()
+        cxt.arc(circle.x, circle.y, circle.r, 0, 2 * Math.PI)
+        cxt.closePath()
+        cxt.fill();
+        return circle;
+    }
+    //绘制线条
+    function drawLine(cxt, x, y, _x, _y, o) {
+        var line = new Line(x, y, _x, _y, o)
+        cxt.beginPath()
+        cxt.strokeStyle = 'rgba(0,0,0,' + o + ')'
+        cxt.moveTo(line.beginX, line.beginY)
+        cxt.lineTo(line.closeX, line.closeY)
+        cxt.closePath()
+        cxt.stroke();
+
+    }
+    //初始化生成原点
+    function init() {
+        circleArr = [];
+        for (var i = 0; i < POINT; i++) {
+            circleArr.push(drawCricle(context, num(WIDTH), num(HEIGHT), num(15, 2), num(10, -10) / 40, num(10, -10) / 40));
+        }
+        draw();
+    }
+
+    //每帧绘制
+    function draw() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < POINT; i++) {
+            drawCricle(context, circleArr[i].x, circleArr[i].y, circleArr[i].r);
+        }
+        for (var i = 0; i < POINT; i++) {
+            for (var j = 0; j < POINT; j++) {
+                if (i + j < POINT) {
+                    var A = Math.abs(circleArr[i + j].x - circleArr[i].x),
+                            B = Math.abs(circleArr[i + j].y - circleArr[i].y);
+                    var lineLength = Math.sqrt(A * A + B * B);
+                    var C = 1 / lineLength * 7 - 0.009;
+                    var lineOpacity = C > 0.03 ? 0.03 : C;
+                    if (lineOpacity > 0) {
+                        drawLine(context, circleArr[i].x, circleArr[i].y, circleArr[i + j].x, circleArr[i + j].y, lineOpacity);
+                    }
+                }
+            }
+        }
+    }
+
+    function signIn() {
+        $("#errorMessage").html("");
+        var userName = $("#userName").val();
+        var password = $("#password").val();
+        if ($.trim(userName) == "" || $.trim(password) == "") {
+            $("#errorMessage").html("用户名和密码不能为空!");
+            return;
+        }
+        var ps = new Object();
+        ps.userName = userName;
+        ps.password = password;
+        var user = JSON.stringify(ps);
+
+
+        $.ajax({
+            type: "post",
+            url: "/login",
+            data: user,
+            success: function (data){
+                if (data && data.success == "true") {
+                    location.href = '/usertag/taglist';
+{#                    localStorage.setItem("users", JSON.stringify(result.pairs.users));#}
+                } else {
+                    $("#errorMessage").html("登录失败,请刷新重试!");
+                }
+            },
+            error: function (a, b, c) {
+                alert(a.responseText);
+            }
+        });
+    }
+
+    //调用执行
+    window.onload = function () {
+        init();
+        setInterval(function () {
+            for (var i = 0; i < POINT; i++) {
+                var cir = circleArr[i];
+                cir.x += cir.moveX;
+                cir.y += cir.moveY;
+                if (cir.x > WIDTH) cir.x = 0;
+                else if (cir.x < 0) cir.x = WIDTH;
+                if (cir.y > HEIGHT) cir.y = 0;
+                else if (cir.y < 0) cir.y = HEIGHT;
+            }
+            draw();
+        }, 18);
+
+        $("body").keydown(function (e) {
+            var e = e || window.event;
+            if (e.keyCode == "13") {
+                signIn();
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

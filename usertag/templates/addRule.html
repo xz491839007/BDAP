@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>数据管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-datetimepicker.min.css">
+      <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/other/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/static/other/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body class="sidebar-mini skin-purple wysihtml5-supported">
+<div class="wrapper">
+    <header class="main-header">
+        <title>SmartX</title>
+        <a class="logo">
+            <span class="logo-lg">SmartX</span>
+        </a>
+        <nav class="navbar navbar-static-top" role="navigation">
+            <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <div class="compy">
+                北邮大数据平台
+            </div>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="hidden-xs">Admin</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+</div>
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>数据知识</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/hiveTable/hiveTableList"><i class="fa fa-cog"></i>Hive表管理</a></li>
+                    <li><a href="/db/dbList"><i class="fa fa-cog"></i>DB配置</a></li>
+                    <li><a href="/quota/quotaList"><i class="fa fa-cog"></i>指标管理</a></li>
+                    <li><a href="/market/marketList"><i class="fa fa-cog"></i>集市管理</a></li>
+                    <li><a href="/hiveTable/timeVariableList"><i class="fa fa-cog"></i>时间变量管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>数据通道</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导入</a></li>
+                    <li><a href="/channel/importDBList" class="lastMenu"><i class="fa fa-cog"></i>DB导入</a></li>
+                    <!--<li><a href="../channel/importHiveHiveList.html" class="lastMenu"><i class="fa fa-cog"></i>Hive-Hive导入</a></li>-->
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导出</a></li>
+                    <li><a href="/channel/exportDBList" class="lastMenu"><i class="fa fa-cog"></i>DB导出</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>调度管理</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/task/taskList"><i class="fa fa-cog"></i>任务调度</a></li>
+                    <li><a href="/task/taskHostoryList"><i class="fa fa-cog"></i>任务日志管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>查询开发</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>查询</a></li>
+                    <li><a href="/dataManager/sqlSearch" class="lastMenu"><i class="fa fa-cog"></i>sql查询</a></li>
+                    <li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>开发</a></li>
+                    <li><a href="/dataManager/hqlManager" class="lastMenu"><i class="fa fa-cog"></i>hql开发管理</a></li>
+                    <li><a href="/dataManager/hqlTaskList" class="lastMenu"><i class="fa fa-cog"></i>hql任务列表</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                <a>
+                    <i class="fa fa-table"></i> <span>监控</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/monitor/monitor"><i class="fa fa-cog"></i>全局拓扑图</a></li>
+                </ul>
+            </li>
+            <li class="treeview active">
+                      <a>
+                          <i class="fa fa-table"></i> <span>用户标签</span>
+                          <i class="fa fa-angle-left pull-right"></i>
+                      </a>
+                      <ul class="treeview-menu">
+                          <li><a href="/usertag/taglist"><i class="fa fa-cog"></i>标签管理</a></li>
+                          <li><a href="/usertag/ruleList"><i class="fa fa-cog"></i>用户群组管理</a></li>
+                      </ul>
+            </li>
+        </ul>
+    </section>
+</aside>
+<div class="content-wrapper noselectContent">
+    <section class="content">
+
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a>用户标签管理</a></li>
+                <li class="active">用户群组管理</li>
+            </ol>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">群组名称</label>
+
+                                <div class="col-sm-3 input-group-sm">
+                                    <input type="text" class="form-control" id="ruleName" placeholder="">
+                                </div>
+                                <div class="col-sm-2">
+                                    <small class="errorMessage" id="enameError">群组名称重复,请重新填写</small>
+                                </div>
+                                <div class="col-sm-5"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">用户标识字段</label>
+
+                                <div class="col-sm-3 input-group-sm">
+                                    <div class="radio" id="uuid">
+                                        <label>
+                                            <input value="card_num" name="uuid" type="radio" checked> card_num
+                                        </label>
+                                        <label style="margin-left:30px;">
+                                            <input value="device_id" name="uuid" type="radio"> device_id
+                                        </label><label style="margin-left:30px;">
+                                            <input value="telphone_no" name="uuid" type="radio"> telphone_no
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 33px;margin-top: 20px;">
+                                <label class="col-sm-2 control-label"></label>
+
+                                <div class="col-sm-8 input-group-sm">
+                                    <div class="radio checkboxTimes">
+                                        <label>
+                                            <input type="radio" value="1" name="period" checked>
+                                            过去1天
+                                        </label>
+                                        <label>
+                                            <input type="radio" value="7" name="period">
+                                            过去7天
+                                        </label>
+                                        <label>
+                                            <input type="radio" value="15" name="period">
+                                            过去15天
+                                        </label>
+                                        <label>
+                                            <input type="radio" value="30" name="period">
+                                            过去1月
+                                        </label>
+                                        <label>
+                                            <input type="radio" value="60" name="period">
+                                            过去2月
+                                        </label>
+                                        <label>
+                                            <input type="radio" value="90" name="period">
+                                            过去3月
+                                        </label>
+                                        <label>
+                                            <input type="radio" value="180" name="period">
+                                            过去6月
+                                        </label>
+                                        <label>
+                                            <input type="radio" value="365" name="period">
+                                            过去1年
+                                        </label>
+                                        <label>
+                                            <input type="radio" value="730" name="period">
+                                            过去2年
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group labelGroups">
+                                <label class="col-sm-2 control-label">选择标签</label>
+
+                                <div class="col-sm-8 input-group-sm">
+                                    <div class="tagGroupTit">
+                                        字段属性
+                                    </div>
+                                    <ul class="tagValues" id="classification_1">
+                                        <!--<li>-->
+                                        <!--<a>-->
+                                        <!--标签师打发-->
+                                        <!--<i class="fa fa-fw fa-times-circle"></i>-->
+                                        <!--</a>-->
+                                        <!--</li>-->
+                                    </ul>
+                                    <div class="more">
+                                        <a>
+                                            更多
+                                            <i class="fa fa-fw fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2"></div>
+                            </div>
+                            <div class="form-group labelGroups">
+                                <label class="col-sm-2 control-label"></label>
+
+                                <div class="col-sm-8 input-group-sm">
+
+                                    <div class="tagGroupTit">
+                                        浏览行为
+                                    </div>
+                                    <ul class="tagValues" id="classification_2">
+
+                                    </ul>
+                                    <div class="more">
+                                        <a>
+                                            更多
+                                            <i class="fa fa-fw fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2"></div>
+                            </div>
+                            <div class="form-group labelGroups">
+                                <label class="col-sm-2 control-label"></label>
+
+                                <div class="col-sm-8 input-group-sm">
+                                    <div class="tagGroupTit">
+                                        购买习惯
+                                    </div>
+                                    <ul class="tagValues" id="classification_3">
+
+                                    </ul>
+                                    <div class="more">
+                                        <a>
+                                            更多
+                                            <i class="fa fa-fw fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2"></div>
+                            </div>
+                            <div class="form-group labelGroups">
+                                <label class="col-sm-2 control-label"></label>
+
+                                <div class="col-sm-8 input-group-sm">
+                                    <div class="tagGroupTit">
+                                        搜索偏好
+                                    </div>
+                                    <ul class="tagValues" id="classification_4">
+
+                                    </ul>
+                                    <div class="more">
+                                        <a>
+                                            更多
+                                            <i class="fa fa-fw fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">已选标签</label>
+
+                                <div class="col-sm-10">
+                                    <div class="box mybox">
+                                        <div class="box-header">
+                                            <h3 class="box-title tableMes">维度</h3>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body dingzhitable" id="selectTable" style="min-height:230px;">
+                                            <table class="table" id="weiduTable">
+                                                <!--<tr>-->
+                                                <!--<td style="width:50px;">-->
+                                                <!--1-->
+                                                <!--</td>-->
+                                                <!--<td style="width:100px;">-->
+                                                <!--国籍-->
+                                                <!--</td>-->
+                                                <!--<td style="width:100px;">-->
+                                                <!--<select class="myselect100">-->
+                                                <!--<option>等于</option>-->
+                                                <!--<option>不等于</option>-->
+                                                <!--<option>in</option>-->
+                                                <!--<option>not in</option>-->
+                                                <!--</select>-->
+                                                <!--</td>-->
+                                                <!--<td style="width:650px;">-->
+                                                <!--<div class="input-group-sm">-->
+                                                <!--<input type="text" class="form-control meijuValues" placeholder="点击添加枚举值" readonly>-->
+                                                <!--</div>-->
+                                                <!--</td>-->
+                                                <!--</tr>-->
+                                            </table>
+                                        </div>
+                                        <div class="box-header">
+                                            <h3 class="box-title tableMes">静态指标</h3>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body dingzhitable" style="min-height:230px;">
+                                            <table class="table" id="jingtaitable">
+                                                <!--<tr>-->
+                                                <!--<td style="width:50px;">-->
+                                                <!--1-->
+                                                <!--</td>-->
+                                                <!--<td  style="width:100px;">-->
+                                                <!--订单数-->
+                                                <!--</td>-->
+                                                <!--<td style="width:600px;" class="valuesTd">-->
+                                                <!--</td>-->
+                                                <!--<td class="guanxiselect" style="width:100px;">-->
+                                                <!--<select class="myselect100">-->
+                                                <!--<option value="=">=</option>-->
+                                                <!--<option value=">"> > </option>-->
+                                                <!--<option value="<"> < </option>-->
+                                                <!--<option value=">=">>=</option>-->
+                                                <!--<option value="<="><=</option>-->
+                                                <!--<option value="between">between</option>-->
+                                                <!--</select>-->
+                                                <!--</td>-->
+                                                <!--<td style="width:100px;">-->
+                                                <!--<div class="input-group-sm">-->
+                                                <!--<input type="text" class="form-control jingduinput" placeholder="">-->
+                                                <!--<input type="text" class="form-control jingduinput" placeholder="" style="display:none;">-->
+                                                <!--</div>-->
+                                                <!--</td>-->
+                                                <!--<td style="width:50px;">-->
+                                                <!--<a class="rulesureAdd">确定</a>-->
+                                                <!--</td>-->
+                                                <!--</tr>-->
+                                            </table>
+                                        </div>
+                                        <div class="box-header">
+                                            <h3 class="box-title tableMes">动态指标</h3>
+                                        </div><!-- /.box-header -->
+                                        <div class="box-body dingzhitable" style="min-height:230px;">
+                                            <table class="table" id="dongtaizhibiao">
+                                                <!--<tr>-->
+                                                <!--<td style="width:50px;">-->
+                                                <!--1-->
+                                                <!--</td>-->
+                                                <!--<td  style="width:100px;">-->
+                                                <!--订单数-->
+                                                <!--</td>-->
+                                                <!--<td style="width:300px;">-->
+                                                <!--<div class="input-group-sm">-->
+                                                <!--<input type="text" class="form-control jingduinput" placeholder="开始时间" >-->
+                                                <!--<input type="text" class="form-control jingduinput" placeholder="结束时间" >-->
+                                                <!--</div>-->
+                                                <!--</td>-->
+                                                <!--<td style="width:300px;" class="valuesTd">-->
+                                                <!--</td>-->
+                                                <!--<td class="guanxiselect" style="width:100px;">-->
+                                                <!--<select class="myselect100">-->
+                                                <!--<option value="=">=</option>-->
+                                                <!--<option value=">"> > </option>-->
+                                                <!--<option value="<"> < </option>-->
+                                                <!--<option value=">=">>=</option>-->
+                                                <!--<option value="<="><=</option>-->
+                                                <!--<option value="between">between</option>-->
+                                                <!--</select>-->
+                                                <!--</td>-->
+                                                <!--<td style="width:100px;">-->
+                                                <!--<div class="input-group-sm">-->
+                                                <!--<input type="text" class="form-control jingduinput" placeholder="">-->
+                                                <!--<input type="text" class="form-control jingduinput" placeholder="" style="display:none;">-->
+                                                <!--</div>-->
+                                                <!--</td>-->
+                                                <!--<td style="width:50px;">-->
+                                                <!--<a class="rulesureAdd">确定</a>-->
+                                                <!--</td>-->
+
+                                                <!--</tr>-->
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="col-sm-1"></div>-->
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">标签逻辑</label>
+
+                                <div class="col-sm-8">
+                                    <div class="tagLuoji">
+                                        <div class="luojiDiv luojiLeft">
+                                            <div class="tit">
+                                                <select class="myselect100" style="width:100px;">
+                                                    <option>and</option>
+                                                    <option>or</option>
+                                                </select>
+                                            </div>
+                                            <div class="cont draggable" id="allTagsDraggagle">
+                                            </div>
+                                        </div>
+                                        <!--<div class="guanxi">-->
+                                        <!--<select class="myselect100">-->
+                                        <!--<option>and</option>-->
+                                        <!--<option>or</option>-->
+                                        <!--</select>-->
+                                        <!--</div>-->
+                                        <!--<div class="luojiDiv luojiLeft">-->
+                                        <!--<div class="tit">-->
+                                        <!--<select class="myselect100" style="width:100px;">-->
+                                        <!--<option>and</option>-->
+                                        <!--<option>or</option>-->
+                                        <!--</select>-->
+                                        <!--<i class="fa fa-fw fa-times"></i>-->
+                                        <!--</div>-->
+                                        <!--<div class="cont draggable">-->
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                        <div class="guanxi">
+                                            <button type="button" class="btn btn-danger addNewGroup">新增逻辑组</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="padding-top:0;">描述</label>
+
+                                <div class="col-sm-5">
+                                    <textarea class="form-control" id="desc" rows="6" placeholder="描述"></textarea>
+                                </div>
+                                <div class="col-sm-5"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+
+                                <div class="col-sm-3">
+                                    <a class="btn btn-info pull-left" id="yulan">预览</a>
+                                    <a class="btn btn-info pull-right" id="add">保存</a>
+                                </div>
+                                <div class="col-sm-3">
+
+                                </div>
+                                <div class="col-sm-4"></div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="modal" id="tagModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title">请选择枚举值</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">快速查询</label>
+
+                            <div class="col-sm-6 input-group-sm">
+                                <input type="text" class="form-control" id="quickSearchValue" placeholder="">
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding selectUsers">
+                        <!--<a class="btn btn-app" data-id="1" data-loginName="guoyan">-->
+                        <!--<span class="badge bg-yellow"><i class="fa fa-fw fa-times"></i></span>-->
+                        <!--Notifications-->
+                        <!--</a>-->
+                    </div>
+                    <div class="box-body no-padding" style="display: block;">
+                        <ul class="nav nav-pills nav-stacked myuserUl">
+                            <li data-value="10000000"><a href="javascript:void(0);">10000000</a></li>
+                            <li data-value="10000002"><a href="javascript:void(0);">10000001</a></li>
+                            <li data-value="10000003"><a href="javascript:void(0);">10000002</a></li>
+                            <li data-value="10000004"><a href="javascript:void(0);">10000003</a></li>
+                            <li data-value="10000005"><a href="javascript:void(0);">10000004</a></li>
+                            <li data-value="10000006"><a href="javascript:void(0);">10000005</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="addMeijuValue">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="drag">
+    <span id="dragSpan">R1-a_tablename-sadsfa</span>
+</div>
+
+</body>
+<script src="/static/other/require/require_jquery-2.1.4.js"></script>
+<script src="/static/js/requireConfig.js"></script>
+<script src="/static/js/userTag/addRule.js"></script>
+</html>
