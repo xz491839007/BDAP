@@ -23,7 +23,7 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
         initEvent:function() {
             var _this = this;
             $("#addTag").click(function(){
-                $("#chooseTypeModal").modal("toggle");
+                location.href = '/usertag/addrule';
             });
             $("#sureAddDB").click(function(){
                 var selectRadio = $("input[name='dbtype']:checked").val();
@@ -93,7 +93,7 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
             showloading(true);
             $.ajax({
                 type: "post",
-                url: "/sentosa/usergroup/group/del/"+id,
+                url: "/usergroup/label/delete/"+id,
                 data: {},
                 success: function (result) {
                     showloading(false);
@@ -121,7 +121,7 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
             showloading(true);
             $.ajax({
                 type: "get",
-                url: "/sentosa/usergroup/group/list",
+                url: "/usergroup/label/list",
                 data: {
                 },
                 success: function (result) {

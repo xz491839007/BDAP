@@ -9,3 +9,6 @@ def rulelist(request):
 
 def addtag(request):
     return render(request, 'tagAdd.html')
+
+def addrule(request):
+    return render(request, "addRule.html")
