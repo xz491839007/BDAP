@@ -1,9 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-from django.db import models
-
 class User(models.Model):
 
     id = models.IntegerField(primary_key=True)
@@ -15,5 +11,16 @@ class User(models.Model):
 
     class Meta:
         db_table = "user"
+
+class Posttypes(models.Model):
+    id = models.IntegerField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    name = models.CharField(db_column='Name', max_length=255)  # Field name made lowercase.
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        managed = False
+        db_table = 'posttypes'
 
 

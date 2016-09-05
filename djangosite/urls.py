@@ -21,7 +21,6 @@ from login import views
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.home),
-    url(r'^postmanage', views.postmanage),
     url(r'^usertag/', include("usertag.urls")),
     url(r'^dataManager/', include("dataManager.urls")),
     url(r'^dataknowledge/', include("dataknowledge.urls")),
