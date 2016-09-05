@@ -21,10 +21,12 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
         init:function(){
             this.initEvent();
             this.getDB();
-            this.id = $.getQueryString("id");
-            if(this.id != null){
-                this.getInfo();
-            }
+            this.getTable();
+            this.getTableElm();
+            // this.id = $.getQueryString("id");
+            // if(this.id != null){
+            //     this.getInfo();
+            // }
         },
 
         initEvent:function() {
@@ -149,53 +151,57 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
 
         saveTag:function(){
             var _this = this;
-            var verifyFlag = verifyEmpty(
-                [
-                    {name:"tagname",label:"标签名称"},
-                    {name:"dbname",label:"DB简称"},
-                    {name:"tableName",label:"表名"}
-                ]
-            );
-            if(verifyFlag){
-               if($("#tagType").val() == 3){
-                    if($.trim($("#rule").val()) == ""){
-                        showTip("聚合规则不能为空");
-                        return;
-                    }
-                   if($.trim($("#juheDate").val()) == ""){
-                       showTip("聚合时间字段映射不能为空");
-                       return;
-                   }
-               }else{
-                   if($.trim($("#selectColum").val()) == ""){
-                       showTip("映射字段映射不能为空");
-                       return;
-                   }
-               }
+            // var verifyFlag = verifyEmpty(
+            //     [
+            //         {name:"tagname",label:"标签名称"},
+            //         {name:"dbname",label:"DB简称"},
+            //         {name:"tableName",label:"表名"}
+            //     ]
+            // );
+            if(true){
+               // if($("#tagType").val() == 3){
+               //      if($.trim($("#rule").val()) == ""){
+               //          showTip("聚合规则不能为空");
+               //          return;
+               //      }
+               //     if($.trim($("#juheDate").val()) == ""){
+               //         showTip("聚合时间字段映射不能为空");
+               //         return;
+               //     }
+               // }else{
+               //     if($.trim($("#selectColum").val()) == ""){
+               //         showTip("映射字段映射不能为空");
+               //         return;
+               //     }
+               // }
 
                 var ColumnLabel = {};
+                console.log($("#tagname").val());
+                console.log($("#dbname").val());
+                console.log($("#tagname").val());
+                console.log($("#tagClass").val());
+                // ColumnLabel.name = $("#tagname").val();
+                // ColumnLabel.groupName = $("#dbname").val();
+                // ColumnLabel.groupId = $("#dbname").attr("data-value");
+                // ColumnLabel.dbId = _this.mainkuId;
+                // ColumnLabel.tableName = $("#tableName").val();
+                // ColumnLabel.columnName = $("#selectColum").val();
+                // ColumnLabel.type = $("#tagType").val();
+                // if(ColumnLabel.type == 3){
+                //     ColumnLabel.aggregateRule = $("#rule").val();
+                //     ColumnLabel.aggregateExpress = $("#juheDate").val();
+                // }
+                // ColumnLabel.classification = $("#tagClass").val();
+                // ColumnLabel.joinColumnName = $("#userColum").val();
+                // ColumnLabel.note = $("#desc").val();
 
-                ColumnLabel.name = $("#tagname").val();
-                ColumnLabel.groupName = $("#dbname").val();
-                ColumnLabel.groupId = $("#dbname").attr("data-value");
-                ColumnLabel.dbId = _this.mainkuId;
-                ColumnLabel.tableName = $("#tableName").val();
-                ColumnLabel.columnName = $("#selectColum").val();
-                ColumnLabel.type = $("#tagType").val();
-                if(ColumnLabel.type == 3){
-                    ColumnLabel.aggregateRule = $("#rule").val();
-                    ColumnLabel.aggregateExpress = $("#juheDate").val();
-                }
-                ColumnLabel.classification = $("#tagClass").val();
-                ColumnLabel.joinColumnName = $("#userColum").val();
-                ColumnLabel.note = $("#desc").val();
-
-                var url = "/sentosa/usergroup/label/create";
-                if(this.id != null){
-                    url = "/sentosa/usergroup/label/modify";
-                    ColumnLabel.id = this.id;
-                }
-                showloading(true);
+                ColumnLabel.name = "pengshuang"
+                var url = "/usertag/createtag";
+                // if(this.id != null){
+                //     url = "/sentosa/usergroup/label/modify";
+                //     ColumnLabel.id = this.id;
+                // }
+                // showloading(true);
                 $.ajax({
                     type: "POST",
                     url: url,
@@ -203,16 +209,16 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                     contentType: 'application/json',
                     data: JSON.stringify(ColumnLabel),
                     success: function (result) {
-                        showloading(false);
-                        if (result && result.success) {
-                            location.href = "tagList.html";
-                        } else {
-                            $.showModal({content: "保存失败:"+result.message});
-                        }
-                    },
-                    error: function (a, b, c) {
-                        showloading(false);
-                        alert(a.responseText);
+                    //     showloading(false);
+                        // if (result && result.success) {
+                        //     location.href = "tagList.html";
+                        // } else {
+                        //     $.showModal({content: "保存失败:"+result.message});
+                        // }
+                    // },
+                    // error: function (a, b, c) {
+                    //     showloading(false);
+                        // alert(a.responseText);
                     }
                 });
             }
@@ -265,17 +271,16 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
 
         getDB: function () {
             var _this = this;
-            showloading(true);
             $.ajax({
                 type: "get",
-                url: "/sentosa/metadata/group/all",
+                url: "/usertag/showall",
                 data: {
                     //groupId:$("#leftKu").find("i.text-light-blue").parent().attr("data-id")
                 },
                 success: function (result) {
-                    showloading(false);
                     if (result && result.success) {
-                        var dat = result.pairs.dat;
+                        var dat = result.data;
+                        // console.log(dat[0]);
                         $("#dbname").quickSearch({
                             data: dat,
                             text: "name",
@@ -305,17 +310,17 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                $("#selectColum").val("");
             }
             $(".meinudiv").hide();
-            showloading(true);
+            // showloading(true);
             $.ajax({
                 type: "get",
-                url: "/sentosa/metadata/group/db/list",
+                url: "/usertag/tsalist",
                 data: {
                     groupId: id
                 },
                 success: function (result) {
-                    showloading(false);
+                    // showloading(false);
                     if (result && result.success) {
-                        var dat = result.pairs.dat;
+                        var dat = result.data;
                         _this.objKu = dat[0];
                         var mainkuId = dat[0].id;
                         _this.mainkuId = mainkuId;
@@ -333,47 +338,43 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                 }
             });
         },
-        getTable: function (id, $obj) {
+        getTable: function () {
             var _this = this;
-            showloading(true);
+            // showloading(true);
             $.ajax({
                 type: "get",
-                url: "/sentosa/metadata/db/outer/table/list",
+                url: "/usertag/tablelist",
                 data: {
-                    dbId: id
+                    // dbId: id
                 },
                 success: function (result) {
-                    showloading(false);
+                    // showloading(false);
                     if (result && result.success) {
-                        var dat = result.pairs.dat;
-                        var _dat = [];
-                        for (var i = 0; i < dat.length; i++) {
-                            var d = {};
-                            d.name = dat[i];
-                            _dat.push(d);
-                        }
-                        $obj.quickSearch({
-                            data: _dat,
+                        var data = result.data;
+                        console.log(data);
+                        // var dat = result.data;
+                        // var _dat = [];
+                        // for (var i = 0; i < dat.length; i++) {
+                        //     var d = {};
+                        //     d.name = dat[i];
+                        //     _dat.push(d);
+                        // }
+                        $("#tableName").quickSearch({
+                            data: data,
                             text: "name",
                             value: "name",
                             width: "400px"
                         });
-                        if ($obj.parent().parent().parent().index() == 0) {
-                            $obj.changeValue(function () {
-                                var value = $(this).attr("data-value");
-                                _this.getTableElm(id, value);
-                            });
-                        }
-                        if(_this.id != null && _this.initFlag == true){
-                            _this.initFlag = false;
-                            _this.getTableElm(id,$("#tableName").val());
-                        }
+                        $("#tableName").changeValue(function () {
+                            var id = $(this).attr("data-value");
+                            _this.getKu(id);
+                        });
                     } else {
                         $.showModal({content: "查询失败"});
                     }
                 },
                 error: function (a, b, c) {
-                    showloading(false);
+                    // showloading(false);
                     alert(a.responseText);
                 }
             });
@@ -381,18 +382,18 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
 
         getTableElm: function (dbId, tableName) {
             var _this = this;
-            showloading(true);
+            // showloading(true);
             $.ajax({
                 type: "get",
-                url: "/sentosa/metadata/db/outer/column/list",
+                url: "/usertag/columnlist",
                 data: {
-                    tableName: tableName,
-                    dbId: dbId
+                    // tableName: tableName,
+                    // dbId: dbId
                 },
                 success: function (result) {
-                    showloading(false);
+                    // showloading(false);
                     if (result && result.success) {
-                        var dat = result.pairs.dat;
+                        var dat = result.data;
                         _this.setTableElm(dat);
                     } else {
                         $.showModal({content: "查询失败"});

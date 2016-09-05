@@ -23,10 +23,8 @@ urlpatterns = [
     url(r'^$', views.home),
     url(r'^postmanage', views.postmanage),
     url(r'^usertag/', include("usertag.urls")),
-    url(r'^monitor/', include("monitor.urls")),
     url(r'^dataManager/', include("dataManager.urls")),
     url(r'^dataknowledge/', include("dataknowledge.urls")),
-    url(r'^task/', include("task.urls")),
     url(r'^channel/', include("channel.urls")),
     url(r'^login', views.login),
 ]

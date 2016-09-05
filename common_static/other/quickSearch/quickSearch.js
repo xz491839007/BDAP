@@ -122,6 +122,7 @@ define(['jquery'],function($){
         function _showSelect(){
             $(".my_quick_search").hide();
             var _data = _this.settings.data;
+            console.log(_data.length);
             var selectStr = "";
             for(var i=0;i<_data.length;i++){
                 var elementStr = " ";
@@ -129,7 +130,7 @@ define(['jquery'],function($){
                     elementStr = elementStr + ' data-' + k + '="' + _data[i][k]+'" ';
                 }
                 selectStr = selectStr + '<li data-value="'+_data[i][_this.settings.value]+'" '+elementStr+'>'
-                    + _data[i][_this.settings.text]
+                    + _data[i]
                     + '</li>'
             }
             if(_this.siblings(".my_quick_search").length>0){

@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'channel',
     'dataManager',
     'dataknowledge',
-    'task',
 ]
 
 MIDDLEWARE_CLASSES = [
