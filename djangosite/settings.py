@@ -89,9 +89,24 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '3306'
+    },
+    'hive': {
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hive',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
     }
 }
 
+DATABASE_ROUTERS = ['database_router.DatabaseAppsRouter']
+
+DATABASE_APPS_MAPPING = {
+    'usertag': ['default', 'hive'],
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

@@ -1,3 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
+def sqlsearch(request):
+    return render(request, 'sqlsearch.html')
+
+def hqlmanager(request):
+    return render(request, 'hqlmanager.html')
+
+def hqltasklist(request):
+    return render(request, 'hqltasklist.html')

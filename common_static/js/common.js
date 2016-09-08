@@ -225,83 +225,83 @@ String.prototype.endWith=function(endStr){
  *
  * */
 
-var users = JSON.parse(localStorage.getItem("users"));
-var staff = [];
-window.staff = staff;
-for(var key in users){
-    staff.push(users[key]);
-}
-var user = getCookie("user");
-if(!user || user == "" || user == null){
-    location.href = "/sentosa/login";
-}
-user = JSON.parse(JSON.parse(getCookie("user")));
-window.staff = staff;
-if(user && user.loginName){
-    $(".hidden-xs").html(user.loginName);
-}else{
-    location.href = "/page/login.html";
-}
-
-$(".sidebar-menu").html('<li class="treeview active">'
-                            +'<a>'
-                                +'<i class="fa fa-table"></i> <span>数据知识</span>'
-                                +'<i class="fa fa-angle-left pull-right"></i>'
-                            +'</a>'
-                            +'<ul class="treeview-menu">'
-                                +'<li><a href="../hiveTable/hiveTableList.html"><i class="fa fa-cog"></i>Hive表管理</a></li>'
-                                +'<li><a href="../db/dbList.html"><i class="fa fa-cog"></i>DB配置</a></li>'
-                                +'<li><a href="../quota/quotaList.html"><i class="fa fa-cog"></i>指标管理</a></li>'
-                                +'<li><a href="../market/marketList.html"><i class="fa fa-cog"></i>集市管理</a></li>'
-                                +'<li><a href="../hiveTable/timeVariableList.html"><i class="fa fa-cog"></i>时间变量管理</a></li>'
-                                +'<li><a href="../hiveTable/tagManage.html"><i class="fa fa-cog"></i>标签管理</a></li>'
-                                +'<li><a href="../hiveTable/tagMapping.html"><i class="fa fa-cog"></i>标签映射</a></li>'
-                            +'</ul>'
-                        +'</li>'
-                        +'<li class="treeview active">'
-                            +'<a>'
-                                +'<i class="fa fa-table"></i> <span>数据通道</span>'
-                                +'<i class="fa fa-angle-left pull-right"></i>'
-                            +'</a>'
-                            +'<ul class="treeview-menu">'
-                                +'<li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导入</a></li>'
-                                +'<li><a href="../channel/importDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导入</a></li>'
-                                +'<li><a href="../channel/uploadList.html"  class="lastMenu"><i class="fa fa-cog"></i>数据上传</a></li>'
-                                +'<li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导出</a></li>'
-                                +'<li><a href="../channel/exportDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导出</a></li>'
-                                //+'<li><a href="../channel/dataMailList.html" class="lastMenu"><i class="fa fa-cog"></i>数据订阅</a></li>'
-                            +'</ul>'
-                        +'</li>'
-                        +'<li class="treeview active">'
-                            +'<a>'
-                                +'<i class="fa fa-table"></i> <span>调度管理</span>'
-                                +'<i class="fa fa-angle-left pull-right"></i>'
-                            +'</a>'
-                            +'<ul class="treeview-menu">'
-                                +'<li><a href="../task/taskList.html"><i class="fa fa-cog"></i>任务调度</a></li>'
-                                +'<li><a href="../task/taskHostoryList.html"><i class="fa fa-cog"></i>任务日志管理</a></li>'
-                            +'</ul>'
-                            +'</li>'
-                        +'<li class="treeview active">'
-                            +'<a>'
-                                +'<i class="fa fa-table"></i> <span>查询开发</span>'
-                                +'<i class="fa fa-angle-left pull-right"></i>'
-                            +'</a>'
-                            +'<ul class="treeview-menu">'
-                                +'<li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>查询</a></li>'
-                                +'<li><a href="../dataManager/sqlSearch.html" class="lastMenu"><i class="fa fa-cog"></i>hql查询</a></li>'
-                                +'<li><a href="../dataManager/hqlSearchList.html" class="lastMenu"><i class="fa fa-cog"></i>hql历史记录</a></li>'
-                                +'<li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>开发</a></li>'
-                                +'<li><a href="../dataManager/hqlManager.html" class="lastMenu"><i class="fa fa-cog"></i>hql开发管理</a></li>'
-                                +'<li><a href="../dataManager/hqlTaskList.html" class="lastMenu"><i class="fa fa-cog"></i>hql任务列表</a></li>'
-                            +'</ul>'
-                        +'</li>'
-                        +'<li class="treeview active">'
-                            +'<a>'
-                                +'<i class="fa fa-table"></i> <span>监控</span>'
-                                +'<i class="fa fa-angle-left pull-right"></i>'
-                            +'</a>'
-                            +'<ul class="treeview-menu">'
-                                +'<li><a href="../monitor/monitor.html"><i class="fa fa-cog"></i>全局拓扑图</a></li>'
-                            +'</ul>'
-                        +'</li>');
+// var users = JSON.parse(localStorage.getItem("users"));
+// var staff = [];
+// window.staff = staff;
+// for(var key in users){
+//     staff.push(users[key]);
+// }
+// var user = getCookie("user");
+// if(!user || user == "" || user == null){
+//     location.href = "/sentosa/login";
+// }
+// user = JSON.parse(JSON.parse(getCookie("user")));
+// window.staff = staff;
+// if(user && user.loginName){
+//     $(".hidden-xs").html(user.loginName);
+// }else{
+//     location.href = "/page/login.html";
+// }
+//
+// $(".sidebar-menu").html('<li class="treeview active">'
+//                             +'<a>'
+//                                 +'<i class="fa fa-table"></i> <span>数据知识</span>'
+//                                 +'<i class="fa fa-angle-left pull-right"></i>'
+//                             +'</a>'
+//                             +'<ul class="treeview-menu">'
+//                                 +'<li><a href="../hiveTable/hiveTableList.html"><i class="fa fa-cog"></i>Hive表管理</a></li>'
+//                                 +'<li><a href="../db/dbList.html"><i class="fa fa-cog"></i>DB配置</a></li>'
+//                                 +'<li><a href="../quota/quotaList.html"><i class="fa fa-cog"></i>指标管理</a></li>'
+//                                 +'<li><a href="../market/marketList.html"><i class="fa fa-cog"></i>集市管理</a></li>'
+//                                 +'<li><a href="../hiveTable/timeVariableList.html"><i class="fa fa-cog"></i>时间变量管理</a></li>'
+//                                 +'<li><a href="../hiveTable/tagManage.html"><i class="fa fa-cog"></i>标签管理</a></li>'
+//                                 +'<li><a href="../hiveTable/tagMapping.html"><i class="fa fa-cog"></i>标签映射</a></li>'
+//                             +'</ul>'
+//                         +'</li>'
+//                         +'<li class="treeview active">'
+//                             +'<a>'
+//                                 +'<i class="fa fa-table"></i> <span>数据通道</span>'
+//                                 +'<i class="fa fa-angle-left pull-right"></i>'
+//                             +'</a>'
+//                             +'<ul class="treeview-menu">'
+//                                 +'<li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导入</a></li>'
+//                                 +'<li><a href="../channel/importDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导入</a></li>'
+//                                 +'<li><a href="../channel/uploadList.html"  class="lastMenu"><i class="fa fa-cog"></i>数据上传</a></li>'
+//                                 +'<li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>导出</a></li>'
+//                                 +'<li><a href="../channel/exportDBList.html" class="lastMenu"><i class="fa fa-cog"></i>DB导出</a></li>'
+//                                 +'<li><a href="../channel/dataMailList.html" class="lastMenu"><i class="fa fa-cog"></i>数据订阅</a></li>'
+                            // +'</ul>'
+                        // +'</li>'
+                        // +'<li class="treeview active">'
+                        //     +'<a>'
+                        //         +'<i class="fa fa-table"></i> <span>调度管理</span>'
+                        //         +'<i class="fa fa-angle-left pull-right"></i>'
+                        //     +'</a>'
+                        //     +'<ul class="treeview-menu">'
+                        //         +'<li><a href="../task/taskList.html"><i class="fa fa-cog"></i>任务调度</a></li>'
+                        //         +'<li><a href="../task/taskHostoryList.html"><i class="fa fa-cog"></i>任务日志管理</a></li>'
+                        //     +'</ul>'
+                        //     +'</li>'
+                        // +'<li class="treeview active">'
+                        //     +'<a>'
+                        //         +'<i class="fa fa-table"></i> <span>查询开发</span>'
+                        //         +'<i class="fa fa-angle-left pull-right"></i>'
+                        //     +'</a>'
+                        //     +'<ul class="treeview-menu">'
+                        //         +'<li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>查询</a></li>'
+                        //         +'<li><a href="../dataManager/sqlSearch.html" class="lastMenu"><i class="fa fa-cog"></i>hql查询</a></li>'
+                        //         +'<li><a href="../dataManager/hqlSearchList.html" class="lastMenu"><i class="fa fa-cog"></i>hql历史记录</a></li>'
+                        //         +'<li><a href="javascript:void(0);"  class="parentMenu"><i class="fa fa-sitemap"></i>开发</a></li>'
+                        //         +'<li><a href="../dataManager/hqlManager.html" class="lastMenu"><i class="fa fa-cog"></i>hql开发管理</a></li>'
+                        //         +'<li><a href="../dataManager/hqlTaskList.html" class="lastMenu"><i class="fa fa-cog"></i>hql任务列表</a></li>'
+                        //     +'</ul>'
+                        // +'</li>'
+                        // +'<li class="treeview active">'
+                        //     +'<a>'
+                        //         +'<i class="fa fa-table"></i> <span>监控</span>'
+                        //         +'<i class="fa fa-angle-left pull-right"></i>'
+                        //     +'</a>'
+                        //     +'<ul class="treeview-menu">'
+                        //         +'<li><a href="../monitor/monitor.html"><i class="fa fa-cog"></i>全局拓扑图</a></li>'
+                        //     +'</ul>'
+                        // +'</li>');

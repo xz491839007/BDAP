@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^tablelist', views.tablelist, name="tablelist"),
     url(r'^columnlist', views.columnlist, name="columnlist"),
     url(r'^createtag', views.createtag, name="createtag"),
+    url(r'^label/list', views.labellist, name="labellist"),
 ]

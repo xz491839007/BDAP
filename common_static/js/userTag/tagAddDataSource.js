@@ -19,9 +19,10 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
         mainkuId:"",
 
         init:function(){
+            var dbname;
             this.initEvent();
             this.getDB();
-            this.getTable();
+            // this.getTable();
             this.getTableElm();
             // this.id = $.getQueryString("id");
             // if(this.id != null){
@@ -279,18 +280,32 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                 },
                 success: function (result) {
                     if (result && result.success) {
-                        var dat = result.data;
-                        // console.log(dat[0]);
+                        size = result.data.length;
+                        var dbs = result.data;
+                        var name = [];
+                        for (var i=0;i<dbs.length;i++){
+                            name.push(dbs[i].name)
+                        }
                         $("#dbname").quickSearch({
-                            data: dat,
+                            data: name,
                             text: "name",
                             value: "id",
                             width: "400px"
                         });
+
                         $("#dbname").changeValue(function () {
-                            var id = $(this).attr("data-value");
-                            _this.getKu(id);
+                            name = $("#dbname").val();
+                            var id;
+                            for (var i=0;i<dbs.length;i++){
+                            if (dbs[i].name == name) {
+                                id = dbs[i].id
+                            }
+                        }
+                            console.log(id);
+                            $("#tableName").val("");
+                            _this.getTable(id);
                         });
+
                     } else {
                         $.showModal({content: "查询失败"});
                     }
@@ -303,55 +318,55 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
         },
 
 
-        getKu: function (id) {
+        // getKu: function (id) {
+        //     var _this = this;
+        //     if(this.id == null || this.initFlag == false){
+        //        $("#tableName").val("");
+        //        $("#selectColum").val("");
+        //     }
+        //     $(".meinudiv").hide();
+        //     showloading(true);
+            // $.ajax({
+            //     type: "get",
+            //     url: "/usertag/tsalist",
+            //     data: {
+            //         groupId: id
+            //     },
+            //     success: function (result) {
+            //         showloading(false);
+                    // if (result && result.success) {
+                    //     var dat = result.data;
+                    //     _this.objKu = dat[0];
+                    //     var mainkuId = dat[0].id;
+                    //     _this.mainkuId = mainkuId;
+                    //     _this.jdbcUrl = dat[0].jdbcUrl;
+                    //     _this.driverType = dat[0].driverType;
+                    //     _this.selectUserName = dat[0].selectUserName;
+                    //     _this.getTable(mainkuId, $("#tableName"));
+                    // } else {
+                    //     $.showModal({content: "查询失败"});
+                    // }
+                // },
+                // error: function (a, b, c) {
+                //     showloading(false);
+                //     alert(a.responseText);
+                // }
+            // });
+        // },
+        getTable: function (dbname) {
             var _this = this;
-            if(this.id == null || this.initFlag == false){
-               $("#tableName").val("");
-               $("#selectColum").val("");
-            }
-            $(".meinudiv").hide();
             // showloading(true);
-            $.ajax({
-                type: "get",
-                url: "/usertag/tsalist",
-                data: {
-                    groupId: id
-                },
-                success: function (result) {
-                    // showloading(false);
-                    if (result && result.success) {
-                        var dat = result.data;
-                        _this.objKu = dat[0];
-                        var mainkuId = dat[0].id;
-                        _this.mainkuId = mainkuId;
-                        _this.jdbcUrl = dat[0].jdbcUrl;
-                        _this.driverType = dat[0].driverType;
-                        _this.selectUserName = dat[0].selectUserName;
-                        _this.getTable(mainkuId, $("#tableName"));
-                    } else {
-                        $.showModal({content: "查询失败"});
-                    }
-                },
-                error: function (a, b, c) {
-                    showloading(false);
-                    alert(a.responseText);
-                }
-            });
-        },
-        getTable: function () {
-            var _this = this;
-            // showloading(true);
+            // name = $("#tableName").val("");
             $.ajax({
                 type: "get",
                 url: "/usertag/tablelist",
                 data: {
-                    // dbId: id
+                    dbname: dbname
                 },
                 success: function (result) {
                     // showloading(false);
                     if (result && result.success) {
                         var data = result.data;
-                        console.log(data);
                         // var dat = result.data;
                         // var _dat = [];
                         // for (var i = 0; i < dat.length; i++) {
@@ -366,29 +381,30 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                             width: "400px"
                         });
                         $("#tableName").changeValue(function () {
-                            var id = $(this).attr("data-value");
-                            _this.getKu(id);
+                            $("#selectColum").val("");
+                            tablename = $("#tablenamee").val();
+                            _this.getTableElm(dbname, tablename);
                         });
                     } else {
                         $.showModal({content: "查询失败"});
                     }
                 },
                 error: function (a, b, c) {
-                    // showloading(false);
+                    showloading(false);
                     alert(a.responseText);
                 }
             });
         },
 
-        getTableElm: function (dbId, tableName) {
+        getTableElm: function (dbname, tableName) {
             var _this = this;
             // showloading(true);
             $.ajax({
                 type: "get",
                 url: "/usertag/columnlist",
                 data: {
-                    // tableName: tableName,
-                    // dbId: dbId
+                    tableName: tableName,
+                    dbname: dbname
                 },
                 success: function (result) {
                     // showloading(false);

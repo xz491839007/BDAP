@@ -122,7 +122,6 @@ define(['jquery'],function($){
         function _showSelect(){
             $(".my_quick_search").hide();
             var _data = _this.settings.data;
-            console.log(_data.length);
             var selectStr = "";
             for(var i=0;i<_data.length;i++){
                 var elementStr = " ";

@@ -1,4 +1,4 @@
-require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'],function($,d3){
+require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','common','app'],function($,d3){
     var tagList = {
 
         pageNo:1,
@@ -106,10 +106,10 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
             var joinColumnName = $("#joinColumnName").val();
             var createDate = $("#createDate").val();
             var desc = $("#desc").val();
-            showloading(true);
+            // showloading(false);
             $.ajax({
                 type: "post",
-                url: "/usergroup/label/list",
+                url: "/usertag/label/list",
                 data: {
                     name: name,
                     desc: desc,
@@ -120,16 +120,17 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                     pageSize:_this.pageSize
                 },
                 success: function (result) {
-                    showloading(false);
+                    // showloading(false);
+                    console.log(result);
                     if(result && result.success){
-                        var dat = result.pairs.dat;
+                        var dat = result;
                         _this.setDataList(dat);
                     }else{
                         $.showModal({content:"查询失败:"+result.message});
                     }
                 },
                 error:function(a,b,c){
-                    showloading(false);
+                    // showloading(false);
                     alert(a.responseText);
                 }
             });
@@ -138,17 +139,18 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
             this.totalPage = dat.totalPage;
             this.totalRecords = dat.totalRecords;
             $("#currentPageNum").html(this.pageNo);
-            $("#totalPageNum").html(this.totalPage);
+            $("#totalPageNum").html(this.totalPag);
             $("#totalNum").html(this.totalRecords);
-            var data = dat.results;
+            var data = dat.result;
             var strHtml = "";
             for(var i=0;i<data.length;i++){
                 var sHtml = '<tr>'
                     +'<td>'+data[i].name+'</td>'
                     +'<td>'+this.getType(data[i].type)+'</td>'
                     +'<td>'+data[i].joinColumnName+'</td>'
-                    +'<td>'+new Date(data[i].createTime).Format('yyyy-MM-dd hh:mm:ss')+'</td>'
+                    +'<td>'+new Date(data[i].createDate).Format('yyyy-MM-dd hh:mm:ss')+'</td>'
                     +'<td>'+data[i].note+'</td>'
+                    // +'<td>'+data[i].note+'</td>'
                     +'<td data-id='+data[i].id+'>'
                     +'<i class="fa fa-fw fa-cog pull-left modify"></i>'
                     +'<i class="fa fa-fw fa-times pull-left delete"></i>'
