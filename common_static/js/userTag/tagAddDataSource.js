@@ -19,7 +19,6 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
         mainkuId:"",
 
         init:function(){
-            var dbname;
             this.initEvent();
             this.getDB();
             // this.getTable();
@@ -92,6 +91,7 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                 ColumnLabel.dbId = _this.mainkuId;
                 ColumnLabel.tableName = $("#tableName").val();
                 ColumnLabel.columnName = $("#selectColum").val();
+                ColumnLabel.userColum = $("#userColum").val();
                 ColumnLabel.type = $("#tagType").val();
                 if(ColumnLabel.type == 3){
                     ColumnLabel.aggregateRule = $("#rule").val();
@@ -100,7 +100,7 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                 showloading(true);
                 $.ajax({
                     type: "post",
-                    url: "/sentosa/usergroup/label/preview",
+                    url: "/usertag/label/preview",
                     dataType: "json",
                     contentType: 'application/json',
                     data: JSON.stringify(ColumnLabel),
@@ -177,26 +177,18 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                // }
 
                 var ColumnLabel = {};
-                console.log($("#tagname").val());
-                console.log($("#dbname").val());
-                console.log($("#tagname").val());
-                console.log($("#tagClass").val());
-                // ColumnLabel.name = $("#tagname").val();
-                // ColumnLabel.groupName = $("#dbname").val();
-                // ColumnLabel.groupId = $("#dbname").attr("data-value");
-                // ColumnLabel.dbId = _this.mainkuId;
-                // ColumnLabel.tableName = $("#tableName").val();
-                // ColumnLabel.columnName = $("#selectColum").val();
-                // ColumnLabel.type = $("#tagType").val();
-                // if(ColumnLabel.type == 3){
-                //     ColumnLabel.aggregateRule = $("#rule").val();
-                //     ColumnLabel.aggregateExpress = $("#juheDate").val();
-                // }
-                // ColumnLabel.classification = $("#tagClass").val();
-                // ColumnLabel.joinColumnName = $("#userColum").val();
-                // ColumnLabel.note = $("#desc").val();
-
-                ColumnLabel.name = "pengshuang"
+                ColumnLabel.tagname = $("#tagname").val();
+                ColumnLabel.dbname = $("#dbname").val();
+                ColumnLabel.tableName = $("#tableName").val();
+                ColumnLabel.tagType = $("#tagType").val();
+                ColumnLabel.tagclass = $("#tagClass").val();
+                ColumnLabel.columnName = $("#selectColum").val();
+                ColumnLabel.userColum = $("#userColum").val();
+                if(ColumnLabel.type == 3){
+                    ColumnLabel.aggregateRule = $("#rule").val();
+                    ColumnLabel.aggregateExpress = $("#juheDate").val();
+                }
+                ColumnLabel.note = $("#desc").val();
                 var url = "/usertag/createtag";
                 // if(this.id != null){
                 //     url = "/sentosa/usergroup/label/modify";
@@ -230,7 +222,7 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
             showloading(true);
             $.ajax({
                 type: "get",
-                url: "/sentosa/usergroup/label/get",
+                url: "/usergroup/label/get",
                 data: {
                     id:_this.id
                 },
@@ -295,15 +287,14 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
 
                         $("#dbname").changeValue(function () {
                             name = $("#dbname").val();
-                            var id;
+                            var dbid;
                             for (var i=0;i<dbs.length;i++){
                             if (dbs[i].name == name) {
-                                id = dbs[i].id
+                                dbid = dbs[i].id
                             }
                         }
-                            console.log(id);
                             $("#tableName").val("");
-                            _this.getTable(id);
+                            _this.getTable(dbid);
                         });
 
                     } else {
@@ -317,63 +308,20 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
             });
         },
 
-
-        // getKu: function (id) {
-        //     var _this = this;
-        //     if(this.id == null || this.initFlag == false){
-        //        $("#tableName").val("");
-        //        $("#selectColum").val("");
-        //     }
-        //     $(".meinudiv").hide();
-        //     showloading(true);
-            // $.ajax({
-            //     type: "get",
-            //     url: "/usertag/tsalist",
-            //     data: {
-            //         groupId: id
-            //     },
-            //     success: function (result) {
-            //         showloading(false);
-                    // if (result && result.success) {
-                    //     var dat = result.data;
-                    //     _this.objKu = dat[0];
-                    //     var mainkuId = dat[0].id;
-                    //     _this.mainkuId = mainkuId;
-                    //     _this.jdbcUrl = dat[0].jdbcUrl;
-                    //     _this.driverType = dat[0].driverType;
-                    //     _this.selectUserName = dat[0].selectUserName;
-                    //     _this.getTable(mainkuId, $("#tableName"));
-                    // } else {
-                    //     $.showModal({content: "查询失败"});
-                    // }
-                // },
-                // error: function (a, b, c) {
-                //     showloading(false);
-                //     alert(a.responseText);
-                // }
-            // });
-        // },
-        getTable: function (dbname) {
+        getTable: function (dbid) {
             var _this = this;
             // showloading(true);
-            // name = $("#tableName").val("");
             $.ajax({
                 type: "get",
                 url: "/usertag/tablelist",
                 data: {
-                    dbname: dbname
+                    dbid: dbid
                 },
                 success: function (result) {
                     // showloading(false);
                     if (result && result.success) {
                         var data = result.data;
-                        // var dat = result.data;
-                        // var _dat = [];
-                        // for (var i = 0; i < dat.length; i++) {
-                        //     var d = {};
-                        //     d.name = dat[i];
-                        //     _dat.push(d);
-                        // }
+                        console.log(result)
                         $("#tableName").quickSearch({
                             data: data,
                             text: "name",
@@ -382,8 +330,9 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                         });
                         $("#tableName").changeValue(function () {
                             $("#selectColum").val("");
-                            tablename = $("#tablenamee").val();
-                            _this.getTableElm(dbname, tablename);
+                            tablename = $("#tableName").val();
+                            alias = $("#dbname").val();
+                            _this.getTableElm(alias, tablename);
                         });
                     } else {
                         $.showModal({content: "查询失败"});
@@ -396,15 +345,14 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
             });
         },
 
-        getTableElm: function (dbname, tableName) {
+        getTableElm: function (alias, tableName) {
             var _this = this;
-            // showloading(true);
             $.ajax({
                 type: "get",
                 url: "/usertag/columnlist",
                 data: {
                     tableName: tableName,
-                    dbname: dbname
+                    alias: alias
                 },
                 success: function (result) {
                     // showloading(false);

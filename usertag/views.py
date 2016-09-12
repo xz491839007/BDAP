@@ -1,15 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+
 from django.views.decorators.http import require_http_methods
-from models import Dbs,Tbls
-from hive_service import ThriftHive
-from thrift import Thrift
-from thrift.transport import TSocket
-from thrift.transport import TTransport
-from thrift.protocol import TBinaryProtocol
+from models import Dbs, Tbls, ColumnLabel
+from login.models import User
 import json
-
-
+import pyhs2
 
 def taglist(request):
     return render(request, 'tagList.html')
@@ -39,44 +35,48 @@ def showall(request):
 
 def tablelist(request):
     result = {}
-    db_id = request.GET.get("dbname")
+    db_id = request.GET.get("dbid")
     list = [item.tbl_name for item in Tbls.objects.using("hive").filter(db_id=db_id).all()]
-    # try:
-    #     transport = TSocket.TSocket("127.0.0.1", 10000)
-    #     transport = TTransport.TBufferedTransport(transport)
-    #     prtocol = TBinaryProtocol.TBinaryProtocol(transport)
-    #     client = ThriftHive.Client(prtocol)
-    #     transport.open()
-    #     db = "bigdata"
-    #     table = "users"
-    #     sql = "DESC %s.%s" %(dbname,table)
-    #     client.execute(sql)
-    #
-    #     print "The return value is:"
-    #     tables = [item.split("\t")[0].strip() for item in client.fetchAll()]
-        # print tables
-        # transport.close()
-    #
-    # except Thrift.TException, tx:
-    #     print '%s' %(tx.message)
-
     result["success"] = True
     result["data"] = list
-
     return JsonResponse(result)
 
 def columnlist(request):
     result = {}
-    db_id = request.GET.get("dbname")
-    tablename = request.GET.get("tablename")
-    result["success"] = True
-    result["data"] = ["c1", "c2", "c3", "c4"]
-    return JsonResponse(result)
+    tablename = request.GET.get("tableName")
+    alias = request.GET.get("alias")
+    if tablename is not None and alias is not None:
+        with pyhs2.connect(host='127.0.0.1',
+                       port=10000,
+                       authMechanism="NOSASL",
+                       database=alias) as conn:
+            with conn.cursor() as cur:
+                hql = "DESC %s.%s" %(alias, tablename)
+                cur.execute(hql)
+                labels = [item[0] for item in cur.fetch()]
 
-@require_http_methods(["POST"])
+        result["success"] = True
+        result["data"] = labels
+        return JsonResponse(result)
+    else:
+        result["success"] = False
+        return JsonResponse(result)
+
 def createtag(request):
     req = json.loads(request.body)
-    print req
+    dbname = req["dbname"]
+    tagname = req["tagname"]
+    tablename = req["tableName"]
+    tagtype = req["tagType"]
+    columnname = req["columnName"]
+    usercolum = req["userColum"]
+    tagclass = req["tagclass"]
+    note = req["note"]
+    # print req
+    ColumnLabel.objects.using("test").get_or_create(db_name=dbname,name=tagname,type=tagtype,
+                      note=note,table_name=tablename,classification=tagclass,
+                      column_name=columnname,join_column_name=usercolum)
+    # print ColumnLabel.objects.using("test").all()
     return JsonResponse(req)
 
 def labellist(request):
@@ -94,4 +94,7 @@ def labellist(request):
     result.append(data1)
     data["result"] = result
     return JsonResponse(data)
+
+def labelget(request):
+    return JsonResponse(None)
 

@@ -1,12 +1,10 @@
 # coding: utf-8
 from __future__ import unicode_literals
-
 from django.db import models
 
 class ColumnLabel(models.Model):
     id = models.BigIntegerField(primary_key=True)
     name = models.CharField(max_length=255)
-    db_id = models.BigIntegerField()
     db_name = models.CharField(max_length=255)
     table_name = models.CharField(max_length=255)
     column_name = models.CharField(max_length=255)
@@ -17,7 +15,6 @@ class ColumnLabel(models.Model):
     classification = models.IntegerField()
     column_enums = models.CharField(max_length=2000)
     note = models.CharField(max_length=255)
-    create_time = models.DateTimeField()
 
     def __unicode__(self):
         return self.name

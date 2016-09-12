@@ -13,7 +13,7 @@ class User(models.Model):
         db_table = "user"
 
 class Posttypes(models.Model):
-    id = models.IntegerField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    id = models.IntegerField(db_column='Id', primary_key=True)
     name = models.CharField(db_column='Name', max_length=255)  # Field name made lowercase.
 
     def __unicode__(self):
