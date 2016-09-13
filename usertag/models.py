@@ -15,6 +15,7 @@ class ColumnLabel(models.Model):
     classification = models.IntegerField()
     column_enums = models.CharField(max_length=2000)
     note = models.CharField(max_length=255)
+    create_time = models.DateTimeField()
 
     def __unicode__(self):
         return self.name

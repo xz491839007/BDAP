@@ -1,7 +1,7 @@
 /**
  * Created by user on 16/6/20.
  */
-require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'],function($,d3){
+require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app','common'],function($,d3){
     var tagDataSourceList = {
 
         pageNo:1,
@@ -21,12 +21,7 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
         init:function(){
             this.initEvent();
             this.getDB();
-            // this.getTable();
-            this.getTableElm();
-            // this.id = $.getQueryString("id");
-            // if(this.id != null){
-            //     this.getInfo();
-            // }
+            // this.getTableElm();
         },
 
         initEvent:function() {
@@ -152,29 +147,29 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
 
         saveTag:function(){
             var _this = this;
-            // var verifyFlag = verifyEmpty(
-            //     [
-            //         {name:"tagname",label:"标签名称"},
-            //         {name:"dbname",label:"DB简称"},
-            //         {name:"tableName",label:"表名"}
-            //     ]
-            // );
-            if(true){
-               // if($("#tagType").val() == 3){
-               //      if($.trim($("#rule").val()) == ""){
-               //          showTip("聚合规则不能为空");
-               //          return;
-               //      }
-               //     if($.trim($("#juheDate").val()) == ""){
-               //         showTip("聚合时间字段映射不能为空");
-               //         return;
-               //     }
-               // }else{
-               //     if($.trim($("#selectColum").val()) == ""){
-               //         showTip("映射字段映射不能为空");
-               //         return;
-               //     }
-               // }
+            var verifyFlag = verifyEmpty(
+                [
+                    {name:"tagname",label:"标签名称"},
+                    {name:"dbname",label:"DB简称"},
+                    {name:"tableName",label:"表名"}
+                ]
+            );
+            if(verifyFlag){
+               if($("#tagType").val() == 3){
+                    if($.trim($("#rule").val()) == ""){
+                        showTip("聚合规则不能为空");
+                        return;
+                    }
+                   if($.trim($("#juheDate").val()) == ""){
+                       showTip("聚合时间字段映射不能为空");
+                       return;
+                   }
+               }else{
+                   if($.trim($("#selectColum").val()) == ""){
+                       showTip("映射字段映射不能为空");
+                       return;
+                   }
+               }
 
                 var ColumnLabel = {};
                 ColumnLabel.tagname = $("#tagname").val();
@@ -202,16 +197,19 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                     contentType: 'application/json',
                     data: JSON.stringify(ColumnLabel),
                     success: function (result) {
-                    //     showloading(false);
-                        // if (result && result.success) {
-                        //     location.href = "tagList.html";
-                        // } else {
-                        //     $.showModal({content: "保存失败:"+result.message});
-                        // }
-                    // },
+                        console.log(result);
+                        if (result && result.success) {
+                            // showloading(false);
+                            showTip("保存成功",function(){
+                                location.href = "/usertag/taglist";
+                            });
+                        }
+                        else {
+                            $.showModal({content: "保存失败:"+result.message});
+                        }
                     // error: function (a, b, c) {
                     //     showloading(false);
-                        // alert(a.responseText);
+                    //     alert(a.responseText);
                     }
                 });
             }
@@ -243,15 +241,12 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                             $(".dongtaizhibiao").show();
                             $(".selectColumdiv").hide();
                         }
-
-
                         $("#tagClass").val(dat.classification);
                         $("#userColum").val(dat.joinColumnName);
                         $("#desc").val(dat.note);
 
-                        _this.getKu(dat.groupId);
                     } else {
-                        $.showModal({content: "查询失败"});
+                        // $.showModal({content: "查询失败"});
                     }
                 },
                 error: function (a, b, c) {
@@ -321,7 +316,6 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                     // showloading(false);
                     if (result && result.success) {
                         var data = result.data;
-                        console.log(result)
                         $("#tableName").quickSearch({
                             data: data,
                             text: "name",
@@ -332,7 +326,10 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','app'
                             $("#selectColum").val("");
                             tablename = $("#tableName").val();
                             alias = $("#dbname").val();
-                            _this.getTableElm(alias, tablename);
+                            if (tablename && alias){
+                                _this.getTableElm(alias, tablename);
+                            }
+
                         });
                     } else {
                         $.showModal({content: "查询失败"});

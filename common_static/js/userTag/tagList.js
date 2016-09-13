@@ -60,7 +60,7 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','comm
             });
 
             $("#taglistTable").delegate(".modify","click",function(){
-                location.href = "tagAdd.html?id="+$(this).parent().attr("data-id");
+                location.href = "tagAdd?id="+$(this).parent().attr("data-id");
             });
             $("#taglistTable").delegate(".delete","click",function(){
                 if(confirm("是否要删除该节点?")){
@@ -74,15 +74,16 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','comm
         },
 
 
-        deleteTask:function(id){
+        deleteTask:function(name){
             var _this = this;
             showloading(true);
+            var dat = {};
+            dat.name = name;
             $.ajax({
                 type: "post",
-                url: "/usergroup/label/delete",
-                data: {
-                    id:id
-                },
+                url: "/usertag/label/delete",
+                dataType: "json",
+                data: JSON.stringify(dat),
                 success: function (result) {
                     showloading(false);
                     if(result && result.success){
@@ -139,20 +140,19 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','comm
             this.totalPage = dat.totalPage;
             this.totalRecords = dat.totalRecords;
             $("#currentPageNum").html(this.pageNo);
-            $("#totalPageNum").html(this.totalPag);
+            $("#totalPageNum").html(this.totalPage);
             $("#totalNum").html(this.totalRecords);
-            var data = dat.result;
+            var data = dat.data;
             var strHtml = "";
             for(var i=0;i<data.length;i++){
                 var sHtml = '<tr>'
-                    +'<td>'+data[i].name+'</td>'
-                    +'<td>'+this.getType(data[i].type)+'</td>'
+                    +'<td>'+data[i].tagname+'</td>'
+                    +'<td>'+this.getType(data[i].classification)+'</td>'
                     +'<td>'+data[i].joinColumnName+'</td>'
-                    +'<td>'+new Date(data[i].createDate).Format('yyyy-MM-dd hh:mm:ss')+'</td>'
+                    +'<td>'+new Date(data[i].createtime).Format('yyyy-MM-dd hh:mm:ss')+'</td>'
                     +'<td>'+data[i].note+'</td>'
-                    // +'<td>'+data[i].note+'</td>'
-                    +'<td data-id='+data[i].id+'>'
-                    +'<i class="fa fa-fw fa-cog pull-left modify"></i>'
+                    +'<td data-id='+data[i].tagname+'>'
+                    // +'<i class="fa fa-fw fa-cog pull-left modify"></i>'
                     +'<i class="fa fa-fw fa-times pull-left delete"></i>'
                     +'</td>'
                     +'</tr>';

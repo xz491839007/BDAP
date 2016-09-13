@@ -1,9 +1,7 @@
+# coding: utf-8
 from django.shortcuts import render
 from django.http import JsonResponse
-
-from django.views.decorators.http import require_http_methods
 from models import Dbs, Tbls, ColumnLabel
-from login.models import User
 import json
 import pyhs2
 
@@ -23,9 +21,7 @@ def showall(request):
     result = {}
     result["success"] = True
     dbs = [[item.db_id, item.name] for item in Dbs.objects.using("hive").all()]
-    # dbname = [item.name for item in Dbs.objects.using("hive").all()]
     result["data"] = []
-    # result["data"]["dbs"] = {}
     for db in dbs:
         db_info = {}
         db_info["id"] = db[0]
@@ -72,29 +68,37 @@ def createtag(request):
     usercolum = req["userColum"]
     tagclass = req["tagclass"]
     note = req["note"]
-    # print req
-    ColumnLabel.objects.using("test").get_or_create(db_name=dbname,name=tagname,type=tagtype,
+    print tagname
+    if len(ColumnLabel.objects.using("test").filter(name=tagname).all()) == 0:
+        req["success"] = True
+        ColumnLabel.objects.using("test").get_or_create(db_name=dbname,name=tagname,type=tagtype,
                       note=note,table_name=tablename,classification=tagclass,
                       column_name=columnname,join_column_name=usercolum)
-    # print ColumnLabel.objects.using("test").all()
-    return JsonResponse(req)
+        return JsonResponse(req)
+    else:
+        req["success"] = False
+        req["message"] = "该标签名已存在"
+        return JsonResponse(req)
 
 def labellist(request):
-    data = {}
-    data["success"] = True
-    result = []
-    data1 = {}
-    data1["name"] = "pengshuang"
-    data1["desc"] = "creative!"
-    data1["type"] = 1
-    # data1["id"] = 2
-    data1["joinColumnName"] = "age"
-    data1["createDate"] = "2012-12-12 10:00:00"
-    data1["note"] = "ok"
-    result.append(data1)
-    data["result"] = result
-    return JsonResponse(data)
+    labellist = {}
+    labellist["success"] = True
+    labellist["data"] = []
+    label = ColumnLabel.objects.using("test").all()
+    for item in label:
+        sonlabel = {}
+        sonlabel["tagname"] = item.name
+        sonlabel["classification"] = item.classification
+        sonlabel["joinColumnName"] = item.join_column_name
+        sonlabel["createtime"] = item.create_time
+        sonlabel["note"] = item.note
+        labellist["data"].append(sonlabel)
+    return JsonResponse(labellist)
 
-def labelget(request):
-    return JsonResponse(None)
+def delete(request):
+    req = json.loads(request.body)
+    req["success"] = True
+    tagname = req["name"]
+    ColumnLabel.objects.using("test").filter(name=tagname).delete()
+    return JsonResponse(req)
 

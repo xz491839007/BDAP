@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'^columnlist', views.columnlist, name="columnlist"),
     url(r'^createtag', views.createtag, name="createtag"),
     url(r'^label/list', views.labellist, name="labellist"),
-    url(r'^label/get', views.labelget, name="labelget"),
+    url(r'^label/delete', views.delete, name="delete"),
 ]
