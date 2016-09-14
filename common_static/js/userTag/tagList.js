@@ -67,6 +67,10 @@ require(['jquery','jquery.bootstrap','jquery.datetimepicker','quickSearch','comm
                     _this.deleteTask($(this).parent().attr("data-id"));
                 }
             });
+
+            $("#logout").click(function () {
+                location.href = '/logout_views';
+            });
             //$("#taglistTable").delegate(".fa-eye","click",function(){
             //    window.open ('uploadInfo.html?id='+$(this).parent().attr("data-id"));
             //});

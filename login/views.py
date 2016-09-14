@@ -1,25 +1,32 @@
 # coding:utf-8
 
 import json
-
 from django.shortcuts import render
 from django.http import JsonResponse
-from django.views.decorators.http import require_http_methods
-
-from usertag.views import taglist
-
-def usertag(request):
-    # a = request.GET['a']
-    # b = request.GET['b']
-    # c = int(a) + int(b)
-    return taglist(request)
+from django.contrib.auth import authenticate, login, logout
 
 def home(request):
-        return render(request, 'login.html')
+    user = request.user
+    if user.is_active:
+        return render(request,'taglist.html')
+    return render(request, 'login.html')
 
-def login(request):
+def login_views(request):
     data = json.loads(request.body)
-    username = data["userName"]
+    username = data["username"]
     password = data["password"]
-    data['success'] = "true"
-    return JsonResponse(data)
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            login(request, user)
+            data['success'] = True
+            return JsonResponse(data)
+        else:
+            pass
+    else:
+        data["success"] = False
+        return JsonResponse(data)
+
+def logout_views(request):
+    logout(request)
+    return render(request, "login.html")

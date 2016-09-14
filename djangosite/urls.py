@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.auth import logout
 from login import views
 
 
@@ -25,5 +26,6 @@ urlpatterns = [
     url(r'^dataManager/', include("dataManager.urls")),
     url(r'^dataknowledge/', include("dataknowledge.urls")),
     url(r'^channel/', include("channel.urls")),
-    url(r'^login', views.login),
+    url(r'^login_views', views.login_views),
+    url(r'^logout_views', views.logout_views),
 ]

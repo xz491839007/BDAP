@@ -1,22 +1,28 @@
 # coding: utf-8
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 from models import Dbs, Tbls, ColumnLabel
 import json
 import pyhs2
 
+@login_required()
 def taglist(request):
     return render(request, 'tagList.html')
 
+@login_required()
 def rulelist(request):
     return render(request, 'rulelist.html')
 
+@login_required()
 def addtag(request):
     return render(request, 'tagAdd.html')
 
+@login_required()
 def addrule(request):
     return render(request, "addRule.html")
 
+@login_required()
 def showall(request):
     result = {}
     result["success"] = True
@@ -29,6 +35,7 @@ def showall(request):
         result["data"].append(db_info)
     return JsonResponse(result)
 
+@login_required()
 def tablelist(request):
     result = {}
     db_id = request.GET.get("dbid")
@@ -37,6 +44,7 @@ def tablelist(request):
     result["data"] = list
     return JsonResponse(result)
 
+@login_required()
 def columnlist(request):
     result = {}
     tablename = request.GET.get("tableName")
@@ -58,6 +66,7 @@ def columnlist(request):
         result["success"] = False
         return JsonResponse(result)
 
+@login_required()
 def createtag(request):
     req = json.loads(request.body)
     dbname = req["dbname"]
@@ -80,6 +89,7 @@ def createtag(request):
         req["message"] = "该标签名已存在"
         return JsonResponse(req)
 
+@login_required()
 def labellist(request):
     labellist = {}
     labellist["success"] = True
@@ -95,6 +105,7 @@ def labellist(request):
         labellist["data"].append(sonlabel)
     return JsonResponse(labellist)
 
+@login_required()
 def delete(request):
     req = json.loads(request.body)
     req["success"] = True

@@ -35,7 +35,7 @@
                     -->
                     <form>
                         <div class="form-group has-feedback">
-                            <input type="text" class="form-control" placeholder="账号" id="userName">
+                            <input type="text" class="form-control" placeholder="账号" id="username">
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         </div>
                         <div class="form-group has-feedback">
@@ -158,26 +158,25 @@
 
     function signIn() {
         $("#errorMessage").html("");
-        var userName = $("#userName").val();
+        var username = $("#username").val();
         var password = $("#password").val();
-        if ($.trim(userName) == "" || $.trim(password) == "") {
+        if ($.trim(username) == "" || $.trim(password) == "") {
             $("#errorMessage").html("用户名和密码不能为空!");
             return;
         }
         var ps = new Object();
-        ps.userName = userName;
+        ps.username = username;
         ps.password = password;
         var user = JSON.stringify(ps);
 
 
         $.ajax({
             type: "post",
-            url: "/login",
+            url: "/login_views",
             data: user,
             success: function (data){
-                if (data && data.success == "true") {
+                if (data && data.success == true) {
                     location.href = '/usertag/taglist';
-{#                    localStorage.setItem("users", JSON.stringify(result.pairs.users));#}
                 } else {
                     $("#errorMessage").html("登录失败,请刷新重试!");
                 }
